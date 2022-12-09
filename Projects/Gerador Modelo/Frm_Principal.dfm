@@ -10,10 +10,11 @@ object FrmPrincipal: TFrmPrincipal
   Font.Height = -13
   Font.Name = 'Arial'
   Font.Style = []
-  PopupMenu = PopupMenu1
+  OldCreateOrder = False
   WindowState = wsMaximized
   OnClose = FormClose
   OnCreate = FormCreate
+  PixelsPerInch = 96
   TextHeight = 16
   object Splitter3: TSplitter
     Left = 265
@@ -169,6 +170,7 @@ object FrmPrincipal: TFrmPrincipal
           DataSource = DTS_CNN
           ParentFont = True
           TabOrder = 0
+          Zoom = 100
         end
       end
       object Combo_Connection: TComboBox
@@ -213,13 +215,6 @@ object FrmPrincipal: TFrmPrincipal
         Height = 16
         Caption = 'Path Modelos'
       end
-      object Label3: TLabel
-        Left = 408
-        Top = 30
-        Width = 71
-        Height = 16
-        Caption = 'Class Name'
-      end
       object btnReverseAll: TButton
         Left = 4
         Top = 139
@@ -241,7 +236,7 @@ object FrmPrincipal: TFrmPrincipal
         Width = 121
         Height = 24
         TabOrder = 1
-        Text = 'model.'
+        Text = 'ormbr.model.'
       end
       object Panel2: TPanel
         Left = 5
@@ -279,8 +274,6 @@ object FrmPrincipal: TFrmPrincipal
         Width = 296
         Height = 17
         Caption = 'Convert Properties To LowerCase'
-        Checked = True
-        State = cbChecked
         TabOrder = 5
       end
       object checkLazy: TCheckBox
@@ -291,13 +284,6 @@ object FrmPrincipal: TFrmPrincipal
         Hint = 'n'
         Caption = 'Gerar Relacionamento com LazyLoad'
         TabOrder = 6
-      end
-      object edtClassName: TEdit
-        Left = 408
-        Top = 52
-        Width = 201
-        Height = 24
-        TabOrder = 7
       end
     end
   end
@@ -354,6 +340,8 @@ object FrmPrincipal: TFrmPrincipal
           ParentFont = False
           ScrollBars = ssBoth
           TabOrder = 0
+          ExplicitLeft = -8
+          ExplicitTop = -183
         end
       end
     end
@@ -581,13 +569,5 @@ object FrmPrincipal: TFrmPrincipal
   object FDPhysPgDriverLink1: TFDPhysPgDriverLink
     Left = 408
     Top = 370
-  end
-  object PopupMenu1: TPopupMenu
-    Left = 344
-    Top = 120
-    object AbrirPasta1: TMenuItem
-      Caption = 'Abrir Pasta'
-      OnClick = AbrirPasta1Click
-    end
   end
 end

@@ -10,8 +10,7 @@ uses
   dbebr.factory.interfaces,
   ormbr.objectset.adapter;
 
-
-type
+type
   TContainerObjectSet<M: class, constructor> = class(TInterfacedObject, IContainerObjectSet<M>)
   protected
     FObjectSetAdapter: TObjectSetAdapter<M>;

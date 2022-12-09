@@ -6,9 +6,10 @@
 	"mainsrc": "Source",
 	"projects": [],
 	"dependencies": {
-		"github.com/hashload/cqlbr": "^1.1.22",
-		"github.com/hashload/dbcbr": "^1.1.4",
-		"github.com/hashload/dbebr": "^1.1.2",
-		"github.com/hashload/jsonbr": "^1.0.2"
+		"github.com/arbsis/cqlbr": "^0.0.0",
+		"github.com/arbsis/dbcbr": "^0.0.0",
+		"github.com/arbsis/dbebr": "^0.0.0",
+		"github.com/arbsis/jsonbr": "^0.0.0"
+		"github.com/arbsis/jsonbr": "^0.0.0"
 	}
 }

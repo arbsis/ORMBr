@@ -52,9 +52,6 @@ uses
 type
   // M - Object M
   TObjectSetBaseAdapter<M: class, constructor> = class(TObjectSetAbstract<M>)
-  protected
-    FSession: TSessionAbstract<M>;
-    FObjectState: TDictionary<string, TObject>;
   private
     procedure AddObjectState(const ASourceObject: TObject);
     procedure UpdateInternal(const AObject: TObject);
@@ -281,7 +278,7 @@ begin
       FSession.Insert(LObject);
       // Popula as propriedades de relacionamento com os valores do master
       LPrimaryKey := TMappingExplorer
-                       .GetMappingPrimaryKeyColumns(LObject.ClassType);
+                       .GetMappingPrimaryKeyColumns(AObject.ClassType);
       if LPrimaryKey = nil then
         raise Exception.Create(cMESSAGEPKNOTFOUND);
 
@@ -290,10 +287,7 @@ begin
     end
     else
     if ACascadeAction = CascadeDelete then // Delete
-    begin
-      CascadeActionsExecute(LObject, CascadeDelete);
-      FSession.Delete(LObject);
-    end
+      FSession.Delete(LObject)
     else
     if ACascadeAction = CascadeUpdate then // Update
     begin
@@ -309,8 +303,7 @@ begin
         FSession.Insert(LObject);
     end;
     // Executa comando em cascade de cada objeto da lista
-    if not (ACascadeAction = CascadeDelete) then
-      CascadeActionsExecute(LObject, ACascadeAction);
+    CascadeActionsExecute(LObject, ACascadeAction);
   end;
 end;
 
@@ -336,7 +329,7 @@ begin
     FSession.Insert(LObject);
     // Popula as propriedades de relacionamento com os valores do master
     LPrimaryKey := TMappingExplorer
-                     .GetMappingPrimaryKeyColumns(LObject.ClassType);
+                     .GetMappingPrimaryKeyColumns(AObject.ClassType);
     if LPrimaryKey = nil then
       raise Exception.Create(cMESSAGEPKNOTFOUND);
 
@@ -345,10 +338,7 @@ begin
   end
   else
   if ACascadeAction = CascadeDelete then // Delete
-  begin
-    CascadeActionsExecute(LObject, CascadeDelete);
-    FSession.Delete(LObject);
-  end
+    FSession.Delete(LObject)
   else
   if ACascadeAction = CascadeUpdate then // Update
   begin
@@ -361,21 +351,10 @@ begin
       FObjectState.TrimExcess;
     end
     else
-    begin
       FSession.Insert(LObject);
-      // Popula as propriedades de relacionamento com os valores do master
-      LPrimaryKey := TMappingExplorer
-                       .GetMappingPrimaryKeyColumns(LObject.ClassType);
-      if LPrimaryKey = nil then
-        raise Exception.Create(cMESSAGEPKNOTFOUND);
-
-      for LColumn in LPrimaryKey.Columns do
-        SetAutoIncValueChilds(LObject, LColumn);
-    end;
   end;
   // Executa comando em cascade de cada objeto da lista
-  if not (ACascadeAction = CascadeDelete) then
-    CascadeActionsExecute(LObject, ACascadeAction);
+  CascadeActionsExecute(LObject, ACascadeAction);
 end;
 
 procedure TObjectSetBaseAdapter<M>.SetAutoIncValueChilds(const AObject: TObject;

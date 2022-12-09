@@ -18,7 +18,7 @@ uses
   Generics.Collections, Vcl.Grids, Vcl.DBGrids, Vcl.WinXCtrls, Vcl.Imaging.pngimage,
   Vcl.DBCGrids,StrUtils, FireDAC.Phys.OracleDef, FireDAC.Phys.DB2Def,
   FireDAC.Phys.IBDef, FireDAC.Phys.IB, FireDAC.Phys.DB2, FireDAC.Phys.Oracle,
-  FireDAC.Phys.PGDef, FireDAC.Phys.PG;
+  FireDAC.Phys.PGDef, FireDAC.Phys.PG, FireDAC.Phys.SQLiteWrapper.Stat;
 
 type
   TFrmPrincipal = class(TForm)
@@ -81,6 +81,10 @@ type
     Button1: TButton;
     checkLowerCase: TCheckBox;
     checkLazy: TCheckBox;
+    Label3: TLabel;
+    edtClassName: TEdit;
+    PopupMenu1: TPopupMenu;
+    AbrirPasta1: TMenuItem;
     procedure lstTabelasClick(Sender: TObject);
     procedure btnReverseAllClick(Sender: TObject);
     procedure memoKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
@@ -94,6 +98,7 @@ type
     procedure CDS_CNNAfterDelete(DataSet: TDataSet);
     procedure btnConectarClick(Sender: TObject);
     procedure Button1Click(Sender: TObject);
+    procedure AbrirPasta1Click(Sender: TObject);
   private
     { Private declarations }
     FAppPathName : String;
@@ -142,7 +147,9 @@ implementation
 
 {$R *.dfm}
 
-uses Frm_Connection;
+uses
+  Frm_Connection,
+  ShellAPI;
 
 procedure TFrmPrincipal.CDS_CNNAfterDelete(DataSet: TDataSet);
 begin
@@ -329,6 +336,9 @@ end;
 procedure TFrmPrincipal.lstTabelasClick(Sender: TObject);
 begin
   Metadata.Connection.GetFieldNames('', '', lstTabelas.Items.Strings[lstTabelas.itemindex], '', lstCampos.items);
+
+  //Gera o nome da classe - Andrews
+  edtClassName.Text := 'T' + Copy(lstTabelas.Items.Strings[lstTabelas.ItemIndex], 1, 1) + Copy(lstTabelas.Items.Strings[lstTabelas.ItemIndex], 2, Length(lstTabelas.Items.Strings[lstTabelas.ItemIndex])).ToLower;
 end;
 
 procedure TFrmPrincipal.memoKeyDown(Sender: TObject; var Key: Word;
@@ -336,6 +346,11 @@ procedure TFrmPrincipal.memoKeyDown(Sender: TObject; var Key: Word;
 begin
   if (Shift = [ssCtrl]) and (Key = Ord('A')) then
      memModel.SelectAll;
+end;
+
+procedure TFrmPrincipal.AbrirPasta1Click(Sender: TObject);
+begin
+  ShellExecute(Application.Handle, 'open', 'explorer.exe', PChar( edtPath.Text), nil, SW_NORMAL);
 end;
 
 procedure TFrmPrincipal.btnConectarClick(Sender: TObject);
@@ -445,7 +460,7 @@ begin
 
             if not DirectoryExists(edtPath.Text) then
               CreateDir(edtPath.Text);
-            memModel.Lines.SaveToFile(edtPath.Text + '\' + edtProjeto.Text + lstTabelas.Items.Strings[intFor]+'.pas');
+            memModel.Lines.SaveToFile(edtPath.Text + '\' + edtProjeto.Text + lstTabelas.Items.Strings[intFor].ToLower +'.pas');
           finally
             _FieldsProperty.Free;
             _Checks.Free;
@@ -593,11 +608,11 @@ begin
      _DestructorDeclaration.Add('    destructor Destroy; override;');
 
      _ConstructorImplementation.Add('');
-     _ConstructorImplementation.Add('constructor T' +lstTabelas.Items.Strings[index] + '.Create;');
+     _ConstructorImplementation.Add('constructor ' + edtClassName.Text + '.Create;');
      _ConstructorImplementation.Add('begin');
 
      _DestructorImplementation.Add('');
-     _DestructorImplementation.Add('destructor T' +lstTabelas.Items.Strings[index] + '.Destroy;');
+     _DestructorImplementation.Add('destructor ' + edtClassName.Text + '.Destroy;');
      _DestructorImplementation.Add('begin');
   end;
   FK := -1;
@@ -652,7 +667,7 @@ begin
        _ConstructorDeclaration.Add('    function get' + Metadata.FieldByName('PKEY_TABLE_NAME').AsString + '_' + IntToStr(_FieldsRelations.Count-1) + ' : T' + Metadata.FieldByName('PKEY_TABLE_NAME').AsString + ';');
 
        _LazyLoadImplementation.Add('');
-       _LazyLoadImplementation.Add('function T' +lstTabelas.Items.Strings[index] + '.get' + Metadata.FieldByName('PKEY_TABLE_NAME').AsString + '_' + IntToStr(_FieldsRelations.Count-1) + ' : T' + Metadata.FieldByName('PKEY_TABLE_NAME').AsString + ';');
+       _LazyLoadImplementation.Add('function ' + edtClassName.Text + '.get' + Metadata.FieldByName('PKEY_TABLE_NAME').AsString + '_' + IntToStr(_FieldsRelations.Count-1) + ' : T' + Metadata.FieldByName('PKEY_TABLE_NAME').AsString + ';');
        _LazyLoadImplementation.Add('begin');
        _LazyLoadImplementation.Add('  Result := F' + Metadata.FieldByName('PKEY_TABLE_NAME').AsString + '_' + IntToStr(_FieldsRelations.Count-1) + '.Value;');
        _LazyLoadImplementation.Add('end;');
@@ -766,13 +781,14 @@ begin
   //Add Units Associadas
   for iKey  := 0 to _UsesRelations.Count -1 do
     memModel.Lines.Add(_UsesRelations[iKey] + ',');
+
   memModel.Lines.Add('  ormbr.types.blob, ');
   memModel.Lines.Add('  ormbr.types.lazy, ');
-  memModel.Lines.Add('  ormbr.types.mapping, ');
   memModel.Lines.Add('  ormbr.types.nullable, ');
-  memModel.Lines.Add('  ormbr.mapping.classes, ');
-  memModel.Lines.Add('  ormbr.mapping.register, ');
-  memModel.Lines.Add('  ormbr.mapping.attributes; ');
+  memModel.Lines.Add('  dbcbr.types.mapping, ');
+  memModel.Lines.Add('  dbcbr.mapping.classes, ');
+  memModel.Lines.Add('  dbcbr.mapping.register, ');
+  memModel.Lines.Add('  dbcbr.mapping.attributes; ');
   memModel.Lines.Add('');
   memModel.Lines.Add('type');
   memModel.Lines.Add('  [Entity]');
@@ -786,8 +802,7 @@ begin
 
   for iKey  := 0 to _Checks.Count -1 do
   memModel.Lines.Add(_Checks[iKey]);
-
-  memModel.Lines.Add('  T' + lstTabelas.Items.Strings[index] + ' = class');
+  memModel.Lines.Add('  ' + edtClassName.Text + ' = class');
   memModel.Lines.Add('  private');
   memModel.Lines.Add('    { Private declarations } ');
   //Add Var Field
@@ -851,7 +866,7 @@ begin
 
   memModel.Lines.Add('');
   memModel.Lines.Add('initialization');
-  memModel.Lines.Add('  TRegisterClass.RegisterEntity(T'+lstTabelas.Items.Strings[index]+')');
+  memModel.Lines.Add('  TRegisterClass.RegisterEntity('+edtClassName.Text+')');
   memModel.Lines.Add('');
 
   memModel.Lines.Add('end.');

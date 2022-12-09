@@ -37,7 +37,10 @@ uses
   SysUtils,
   {$IFDEF HAS_FMX}
     FMX.Graphics,
-  {$ELSE}
+  {$ENDIF}
+  {$IFDEF NOGUI}
+  {$ENDIF}
+  {$IFDEF HAS_VCL}
     // Delphi > 2010 adicionar em:
     // Option->Delphi Compiler->Unit scope names, "Vcl", "Vcl.Imaging"
     Graphics,
@@ -66,7 +69,7 @@ type
     FBase64Bytes: TBytes;
     FBlobField: TBlobField;
     function StreamToByteArray(AStream: TStream): TBytes;
-    {$IFNDEF HAS_FMX}
+    {$IFDEF HAS_VCL}
     function FindGraphicClass(const ABuffer; const ABufferSize: Int64;
       out AGraphicClass: TGraphicClass): Boolean; overload;
     function FindGraphicClass(AStream: TStream;
@@ -82,10 +85,12 @@ type
     procedure SetBytes(const Value: TBytes);
     procedure LoadFromFile(const AFileName: string; const ACompression: Boolean = False);
     procedure SaveToFile(const FileName: string);
-    {$IFNDEF HAS_FMX}
+    {$IFDEF HAS_VCL}
     procedure ToPicture(APicture: TPicture; const ACompression: Boolean = False);
     {$ENDIF}
+    {$IFNDEF HAS_NOGUI}
     procedure ToBitmap(ABitmap: TBitmap; const ACompression: Boolean = False);
+    {$ENDIF}
     function ToBytes: TBytes;
     function ToBytesString: string; overload;
     function ToStringBytes(const AString: string): Boolean; overload;
@@ -175,7 +180,7 @@ begin
     SetLength(Result, 0);
 end;
 
-{$IFNDEF HAS_FMX}
+{$IFDEF HAS_VCL}
 procedure TBlob.ToPicture(APicture: TPicture; const ACompression: Boolean);
 var
   LGraphic: TGraphic;
@@ -227,7 +232,7 @@ begin
   Result := Length(FBase64Bytes);
 end;
 
-{$IFNDEF HAS_FMX}
+{$IFDEF HAS_VCL}
 function TBlob.FindGraphicClass(const ABuffer; const ABufferSize: Int64;
   out AGraphicClass: TGraphicClass): Boolean;
 var
@@ -320,6 +325,7 @@ begin
   end
 end;
 
+{$IFNDEF HAS_NOGUI}
 procedure TBlob.ToBitmap(ABitmap: TBitmap; const ACompression: Boolean);
 var
   LSourceStream: TMemoryStream;
@@ -353,6 +359,7 @@ begin
     LSourceStream.Free;
   end;
 end;
+{$ENDIF}
 
 function TBlob.ToBytes: TBytes;
 begin

@@ -1,2 +1,2 @@
 Link da dependência
-https://github.com/HashLoad/DBCBr/archive/refs/heads/master.zip
+https://isaquepinheiro@bitbucket.org/isaquepinheiro/dbcbr.git

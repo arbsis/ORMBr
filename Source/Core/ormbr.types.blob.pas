@@ -37,7 +37,8 @@ uses
   SysUtils,
   {$IFDEF HAS_FMX}
     FMX.Graphics,
-  {$ELSE}
+  {$ENDIF}
+  {$IFDEF HAS_VCL}
     // Delphi > 2010 adicionar em:
     // Option->Delphi Compiler->Unit scope names, "Vcl", "Vcl.Imaging"
     Graphics,
@@ -66,7 +67,7 @@ type
     FBase64Bytes: TBytes;
     FBlobField: TBlobField;
     function StreamToByteArray(AStream: TStream): TBytes;
-    {$IFNDEF HAS_FMX}
+    {$IFDEF HAS_VCL}
     function FindGraphicClass(const ABuffer; const ABufferSize: Int64;
       out AGraphicClass: TGraphicClass): Boolean; overload;
     function FindGraphicClass(AStream: TStream;
@@ -82,10 +83,13 @@ type
     procedure SetBytes(const Value: TBytes);
     procedure LoadFromFile(const AFileName: string; const ACompression: Boolean = False);
     procedure SaveToFile(const FileName: string);
-    {$IFNDEF HAS_FMX}
+    {$IFDEF HAS_VCL}
     procedure ToPicture(APicture: TPicture; const ACompression: Boolean = False);
-    {$ENDIF}
     procedure ToBitmap(ABitmap: TBitmap; const ACompression: Boolean = False);
+    {$ENDIF}
+    {$IFDEF HAS_FMX}
+    procedure ToBitmap(ABitmap: TBitmap; const ACompression: Boolean = False);
+    {$ENDIF}
     function ToBytes: TBytes;
     function ToBytesString: string; overload;
     function ToStringBytes(const AString: string): Boolean; overload;
@@ -175,7 +179,7 @@ begin
     SetLength(Result, 0);
 end;
 
-{$IFNDEF HAS_FMX}
+{$IFDEF HAS_VCL}
 procedure TBlob.ToPicture(APicture: TPicture; const ACompression: Boolean);
 var
   LGraphic: TGraphic;
@@ -220,14 +224,7 @@ begin
     LGraphic.Free;
   end;
 end;
-{$ENDIF}
 
-function TBlob.ToSize: Integer;
-begin
-  Result := Length(FBase64Bytes);
-end;
-
-{$IFNDEF HAS_FMX}
 function TBlob.FindGraphicClass(const ABuffer; const ABufferSize: Int64;
   out AGraphicClass: TGraphicClass): Boolean;
 var
@@ -290,35 +287,6 @@ begin
     FreeMem(LBuffer);
   end;
 end;
-{$ENDIF}
-
-procedure TBlob.LoadFromFile(const AFileName: string;
-  const ACompression: Boolean = False);
-var
-  LSourceStream: TMemoryStream;
-  LTargetStream: TMemoryStream;
-begin
-  LSourceStream := TMemoryStream.Create;
-  try
-    LSourceStream.LoadFromFile(AFileName);
-    LSourceStream.Position := 0;
-    if ACompression then
-    begin
-      LTargetStream := TMemoryStream.Create;
-      try
-        CompressStream(LSourceStream, LTargetStream);
-        FBase64Bytes := StreamToByteArray(LTargetStream);
-      finally
-        LTargetStream.Free;
-      end
-    end
-    else
-      FBase64Bytes := StreamToByteArray(LSourceStream);
-    FBase64String := ToBytesString;
-  finally
-    LSourceStream.Free;
-  end
-end;
 
 procedure TBlob.ToBitmap(ABitmap: TBitmap; const ACompression: Boolean);
 var
@@ -353,6 +321,76 @@ begin
     LSourceStream.Free;
   end;
 end;
+{$ENDIF}
+
+function TBlob.ToSize: Integer;
+begin
+  Result := Length(FBase64Bytes);
+end;
+
+procedure TBlob.LoadFromFile(const AFileName: string;
+  const ACompression: Boolean = False);
+var
+  LSourceStream: TMemoryStream;
+  LTargetStream: TMemoryStream;
+begin
+  LSourceStream := TMemoryStream.Create;
+  try
+    LSourceStream.LoadFromFile(AFileName);
+    LSourceStream.Position := 0;
+    if ACompression then
+    begin
+      LTargetStream := TMemoryStream.Create;
+      try
+        CompressStream(LSourceStream, LTargetStream);
+        FBase64Bytes := StreamToByteArray(LTargetStream);
+      finally
+        LTargetStream.Free;
+      end
+    end
+    else
+      FBase64Bytes := StreamToByteArray(LSourceStream);
+    FBase64String := ToBytesString;
+  finally
+    LSourceStream.Free;
+  end
+end;
+
+{$IFDEF HAS_FMX}
+procedure TBlob.ToBitmap(ABitmap: TBitmap; const ACompression: Boolean);
+var
+  LSourceStream: TMemoryStream;
+  LTargetStream: TMemoryStream;
+begin
+  LSourceStream := TMemoryStream.Create;
+  try
+    if Length(FBase64Bytes) = 0 then
+    begin
+      ABitmap.Assign(nil);
+      Exit;
+    end;
+    LSourceStream.Write(FBase64Bytes, ToSize);
+    if ACompression then
+    begin
+      LTargetStream := TMemoryStream.Create;
+      try
+        DecompressStream(LSourceStream, LTargetStream);
+        LTargetStream.Position := 0;
+        ABitmap.LoadFromStream(LTargetStream);
+      finally
+        LTargetStream.Free;
+      end;
+    end
+    else
+    begin
+      LSourceStream.Position := 0;
+      ABitmap.LoadFromStream(LSourceStream);
+    end;
+  finally
+    LSourceStream.Free;
+  end;
+end;
+{$ENDIF}
 
 function TBlob.ToBytes: TBytes;
 begin

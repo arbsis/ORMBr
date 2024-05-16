@@ -274,8 +274,8 @@ var
 begin
   Result := '';
   LKey := AObject.ClassType.ClassName + '-INSERT';
-  if FQueryCache.TryGetValue(LKey, Result) then
-    Exit;
+//  if FQueryCache.TryGetValue(LKey, Result) then
+//    Exit;
   LTable := TMappingExplorer.GetMappingTable(AObject.ClassType);
   LColumns := TMappingExplorer.GetMappingColumn(AObject.ClassType);
   LCriteria := CreateCriteria.Insert.Into(LTable.Name);

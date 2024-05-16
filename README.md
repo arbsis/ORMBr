@@ -1,19 +1,6 @@
 # ORMBr Framework for Delphi
 
-Da visão de aproveitar ao máximo o conceito de Orientação a Objetos, o Mapeamento Objeto-Relacional (ORM) consiste em um framework que tem por objetivo encurtar as distância entre a orientado a objetos e o modelo entidade-relacional, criando uma ponte (mapeamento) entre eles. Com a abordagem, é possível a construção de sistemas aplicando a orientado a objetos, cujo os objetos são persistidos em um banco de dados relacional.
-
-Um ORM possui diversos métodos básicos que irão realizar a interação entre a aplicação e o banco de dados, se responsabilizando por algumas tarefas básicas, como o CRUD (Create, Read, Update e Delete), por exemplo. Além disso, o ORM irá gerenciar os detalhes de mapeamento de um conjunto de objetos para um banco de dados.
-
-O ORM reduz ao mínimo a necessidade de escrever códigos de conexão e queries SQL. Dessa forma, é possível obter uma redução significativa nos códigos da aplicação, gerando um código mais elegante e consequentemente ampliando a facilidade de posteriores manutenções na aplicação.
-
-É importante deixar claro que a utilização de um framework ORM não substitui totalmente a necessidade da utilização de SQL na sua aplicação. Embora o ORM satisfaça a maior parte das necessidades de interação com o banco de dados, em alguns casos, haverá a necessidade, por exemplo, de consultas mais customizadas, que terão que ser realizadas por meio de SQL. 
-por: Bárbara Ranieri
-
-<p align="center">
-  <a href="https://www.isaquepinheiro.com.br">
-    <img src="https://github.com/HashLoad/ORMBr/blob/master/Images/ormbrbitucket.png">
-  </a>
-</p>
+Versão mantida por Andrews Bejatto.
 
 ## 🏛 Delphi Versions
 Embarcadero Delphi XE e superior.

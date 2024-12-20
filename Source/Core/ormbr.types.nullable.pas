@@ -1,167 +1,154 @@
-{******************************************************************************}
-{                                                                              }
-{  Neon: Serialization Library for Delphi                                      }
-{  Copyright (c) 2018 Paolo Rossi                                              }
-{  https://github.com/paolo-rossi/neon-library                                 }
-{                                                                              }
-{******************************************************************************}
-{                                                                              }
-{  Licensed under the Apache License, Version 2.0 (the "License");             }
-{  you may not use this file except in compliance with the License.            }
-{  You may obtain a copy of the License at                                     }
-{                                                                              }
-{      http://www.apache.org/licenses/LICENSE-2.0                              }
-{                                                                              }
-{  Unless required by applicable law or agreed to in writing, software         }
-{  distributed under the License is distributed on an "AS IS" BASIS,           }
-{  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.    }
-{  See the License for the specific language governing permissions and         }
-{  limitations under the License.                                              }
-{                                                                              }
-{******************************************************************************}
-unit ormbr.types.nullable;
+{
+      ORM Brasil é um ORM simples e descomplicado para quem utiliza Delphi
 
-{$I Neon.inc}
+                   Copyright (c) 2016, Isaque Pinheiro
+                          All rights reserved.
+
+                    GNU Lesser General Public License
+                      Versão 3, 29 de junho de 2007
+
+       Copyright (C) 2007 Free Software Foundation, Inc. <http://fsf.org/>
+       A todos é permitido copiar e distribuir cópias deste documento de
+       licença, mas mudá-lo não é permitido.
+
+       Esta versão da GNU Lesser General Public License incorpora
+       os termos e condições da versão 3 da GNU General Public License
+       Licença, complementado pelas permissões adicionais listadas no
+       arquivo LICENSE na pasta principal.
+}
+
+{
+  @abstract(ORMBr Framework.)
+  @created(20 Jul 2016)
+  @author(Isaque Pinheiro <isaquepsp@gmail.com>)
+}
+
+unit ormbr.types.nullable;
 
 interface
 
 uses
-  System.SysUtils, System.Variants, System.Classes, System.Generics.Defaults, System.Rtti,
-  System.TypInfo, System.JSON;
+  Generics.Defaults,
+  SysUtils,
+  Variants,
+  Rtti;
 
 type
-  ENullableException = class(Exception);
-
-  {$RTTI EXPLICIT FIELDS([vcPrivate]) METHODS([vcPrivate])}
   Nullable<T> = record
   private
     FValue: T;
-    FHasValue: string;
-    procedure Clear;
-    function GetValueType: PTypeInfo;
+    FHasValue: Boolean;
     function GetValue: T;
-    procedure SetValue(const AValue: T);
     function GetHasValue: Boolean;
+    procedure Clear;
+    class function VarIsNullOrEmpty(const Value: Variant): Boolean; static;
   public
     constructor Create(const Value: T); overload;
     constructor Create(const Value: Variant); overload;
-    function Equals(const Value: Nullable<T>): Boolean; overload;
-    function Equals(const Value: T): Boolean; overload;
     function GetValueOrDefault: T; overload;
-    function GetValueOrDefault(const Default: T): T; overload;
+    function GetValueOrDefault(const defaultValue: T): T; overload;
+    function Equals(const other: Nullable<T>): Boolean;
+    function ToString: String;
+    function ToVariant: Variant;
 
     property HasValue: Boolean read GetHasValue;
-    function IsNull: Boolean;
-
     property Value: T read GetValue;
 
+    { Operator Overloads }
     class operator Implicit(const Value: Nullable<T>): T;
-    class operator Implicit(const Value: Nullable<T>): Variant;
-    class operator Implicit(const Value: Pointer): Nullable<T>;
     class operator Implicit(const Value: T): Nullable<T>;
+    class operator Implicit(const Value: Nullable<T>): Variant;
     class operator Implicit(const Value: Variant): Nullable<T>;
-    class operator Implicit(const Value: TValue): Nullable<T>;
-    class operator Equal(const Left, Right: Nullable<T>): Boolean; overload;
-    class operator Equal(const Left: Nullable<T>; Right: T): Boolean; overload;
-    class operator Equal(const Left: T; Right: Nullable<T>): Boolean; overload;
-    class operator NotEqual(const Left, Right: Nullable<T>): Boolean; overload;
-    class operator NotEqual(const Left: Nullable<T>; Right: T): Boolean; overload;
-    class operator NotEqual(const Left: T; Right: Nullable<T>): Boolean; overload;
-    class operator GreaterThan(const Left: Nullable<T>; Right: T): Boolean; overload;
-    class operator LessThan(const Left: Nullable<T>; Right: T): Boolean; overload;
+    class operator Implicit(Value: Pointer): Nullable<T>;
+    class operator Equal(const a, b: Nullable<T>) : Boolean;
+    class operator NotEqual(const a, b: Nullable<T>) : Boolean;
   end;
 
-  NullString = Nullable<string>;
+  NullString = Nullable<String>;
   NullBoolean = Nullable<Boolean>;
   NullInteger = Nullable<Integer>;
   NullInt64 = Nullable<Int64>;
   NullDouble = Nullable<Double>;
-  NullDateTime = Nullable<TDateTime>;
   NullCurrency = Nullable<Currency>;
+  NullDate = Nullable<TDate>;
+  NullTime = Nullable<TTime>;
+  NullDateTime = Nullable<TDateTime>;
 
 implementation
 
-uses
-  Neon.Core.Utils;
-
-{ Nullable<T> }
+const
+  CHasValueFlag = '@';
 
 constructor Nullable<T>.Create(const Value: T);
 begin
   FValue := Value;
-  FHasValue := DefaultTrueBoolStr;
+  FHasValue := True;
 end;
 
 constructor Nullable<T>.Create(const Value: Variant);
+var
+  LValue: TValue;
 begin
-  if not VarIsNull(Value) and not VarIsEmpty(Value) then
-    Create(TValue.FromVariant(Value).AsType<T>)
+  if not VarIsNullOrEmpty(Value) then
+  begin
+    LValue := TValue.FromVariant(Value);
+    FValue := LValue.AsType<T>;
+    FHasValue := True;
+  end
   else
     Clear;
 end;
 
 procedure Nullable<T>.Clear;
 begin
+  FHasValue := False;
   FValue := Default(T);
-  FHasValue := '';
 end;
 
-class operator Nullable<T>.Equal(const Left: Nullable<T>; Right: T): Boolean;
+class function Nullable<T>.VarIsNullOrEmpty(const Value: Variant): Boolean;
 begin
-  Result := Left.Equals(Right);
-end;
-
-class operator Nullable<T>.Equal(const Left: T; Right: Nullable<T>): Boolean;
-begin
-  Result := Right.Equals(Left);
-end;
-
-function Nullable<T>.Equals(const Value: T): Boolean;
-begin
-  Result := HasValue and TEqualityComparer<T>.Default.Equals(Self.Value, Value)
-end;
-
-function Nullable<T>.Equals(const Value: Nullable<T>): Boolean;
-begin
-  if HasValue and Value.HasValue then
-    Result := TEqualityComparer<T>.Default.Equals(Self.Value, Value.Value)
-  else
-    Result := HasValue = Value.HasValue;
+  Result := VarIsNull(Value) or VarIsEmpty(Value);
 end;
 
 function Nullable<T>.GetHasValue: Boolean;
 begin
-  Result := FHasValue <> '';
-end;
-
-function Nullable<T>.GetValueType: PTypeInfo;
-begin
-  Result := TypeInfo(T);
-end;
-
-class operator Nullable<T>.GreaterThan(const Left: Nullable<T>; Right: T): Boolean;
-begin
-  Result := Left.HasValue and (TComparer<T>.Default.Compare(Left.Value, Right) > 0);
+  Result := FHasValue;
 end;
 
 function Nullable<T>.GetValue: T;
 begin
-  if not HasValue then
-    raise ENullableException.Create('Nullable type has no value');
+//  if not HasValue then
+//     raise Exception.Create('Invalid operation, Nullable type has no value.');
   Result := FValue;
-end;
-
-function Nullable<T>.GetValueOrDefault(const Default: T): T;
-begin
-  if HasValue then
-    Result := FValue
-  else
-    Result := Default;
 end;
 
 function Nullable<T>.GetValueOrDefault: T;
 begin
-  Result := GetValueOrDefault(Default(T));
+  if HasValue then
+    Result := Value
+  else
+    Result := Default(T);
+end;
+
+function Nullable<T>.GetValueOrDefault(const defaultValue: T): T;
+begin
+  if HasValue then
+    Result := Value
+  else
+    Result := defaultValue;
+end;
+
+function Nullable<T>.Equals(const other: Nullable<T>): Boolean;
+begin
+  if HasValue and other.HasValue then
+    Result := TEqualityComparer<T>.Default.Equals(Value, other.Value)
+  else
+    Result := HasValue = other.HasValue;
+end;
+
+class operator Nullable<T>.Implicit(const Value: T): Nullable<T>;
+begin
+  Result := Nullable<T>.Create(Value);
 end;
 
 class operator Nullable<T>.Implicit(const Value: Nullable<T>): T;
@@ -170,70 +157,79 @@ begin
 end;
 
 class operator Nullable<T>.Implicit(const Value: Nullable<T>): Variant;
+var
+  LValue: TValue;
 begin
   if Value.HasValue then
-    Result := TValue.From<T>(Value.Value).AsVariant
+  begin
+    LValue := TValue.From<T>(Value.Value);
+    if LValue.IsType<Boolean> then
+      Result := LValue.AsBoolean
+    else
+      Result := LValue.AsVariant;
+  end
   else
     Result := Null;
 end;
 
-class operator Nullable<T>.Implicit(const Value: Pointer): Nullable<T>;
+class operator Nullable<T>.Implicit(const Value: Variant): Nullable<T>;
+var
+  LValue: TValue;
 begin
-  if Value = nil then
+  if not VarIsNullOrEmpty(Value) then
+  begin
+    LValue := TValue.FromVariant(Value);
+    Result := Nullable<T>.Create(LValue.AsType<T>);
+  end
+  else
+    Result.Clear;
+end;
+
+class operator Nullable<T>.Implicit(Value: Pointer): Nullable<T>;
+begin
+  if not Assigned(Value) then
     Result.Clear
   else
-    Result := Nullable<T>.Create(T(Value^));
+    raise Exception.Create('Cannot assigned non-null pointer to nullable type.');
 end;
 
-class operator Nullable<T>.Implicit(const Value: T): Nullable<T>;
+class operator Nullable<T>.Equal(const a, b: Nullable<T>): Boolean;
 begin
-  Result := Nullable<T>.Create(Value);
+  Result := a.Equals(b);
 end;
 
-class operator Nullable<T>.Implicit(const Value: Variant): Nullable<T>;
+class operator Nullable<T>.NotEqual(const a, b: Nullable<T>): Boolean;
 begin
-  Result := Nullable<T>.Create(Value);
+  Result := not a.Equals(b);
 end;
 
-function Nullable<T>.IsNull: Boolean;
+function Nullable<T>.ToString: String;
+var
+  LValue: TValue;
 begin
-  Result := FHasValue = '';
+  if HasValue then
+  begin
+    LValue := TValue.From<T>(FValue);
+    Result := LValue.ToString;
+  end
+  else
+    Result := 'Null';
 end;
 
-class operator Nullable<T>.LessThan(const Left: Nullable<T>; Right: T): Boolean;
+function Nullable<T>.ToVariant: Variant;
+var
+  LValue: TValue;
 begin
-  Result := Left.HasValue and (TComparer<T>.Default.Compare(Left.Value, Right) < 0);
-end;
-
-class operator Nullable<T>.NotEqual(const Left: Nullable<T>; Right: T): Boolean;
-begin
-  Result := not Left.Equals(Right);
-end;
-
-class operator Nullable<T>.NotEqual(const Left: T; Right: Nullable<T>): Boolean;
-begin
-  Result := not Right.Equals(Left);
-end;
-
-class operator Nullable<T>.Equal(const Left, Right: Nullable<T>): Boolean;
-begin
-  Result := Left.Equals(Right);
-end;
-
-class operator Nullable<T>.NotEqual(const Left, Right: Nullable<T>): Boolean;
-begin
-  Result := not Left.Equals(Right);
-end;
-
-procedure Nullable<T>.SetValue(const AValue: T);
-begin
-  FValue := AValue;
-  FHasValue := DefaultTrueBoolStr;
-end;
-
-class operator Nullable<T>.Implicit(const Value: TValue): Nullable<T>;
-begin
-  Result := Nullable<T>.Create(Value.AsType<T>);
+  if HasValue then
+  begin
+    LValue := TValue.From<T>(FValue);
+    if LValue.IsType<Boolean> then
+      Result := LValue.AsBoolean
+    else
+      Result := LValue.AsVariant;
+  end
+  else
+    Result := Null;
 end;
 
 end.

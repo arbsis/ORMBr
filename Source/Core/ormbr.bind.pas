@@ -20,9 +20,7 @@
 { @abstract(ORMBr Framework.)
   @created(20 Jul 2016)
   @author(Isaque Pinheiro <isaquepsp@gmail.com>)
-  @author(Skype : ispinheiro)
   @abstract(Website : http://www.ormbr.com.br)
-  @abstract(Telagram : https://t.me/ormbr)
 }
 
 unit ormbr.bind;
@@ -61,7 +59,7 @@ type
     procedure SetFieldToField(const AResultSet: IDBResultSet;
       const ADataSet: TDataSet);
     function GetFieldValue(const ADataSet: TDataSet;
-      const AFieldName: string; const AFieldType: TFieldType): string;
+      const AFieldName: String; const AFieldType: TFieldType): String;
     procedure SetFieldToProperty(const ADataSet: TDataSet;
       const AObject: TObject); overload;
     procedure SetFieldToProperty(const ADataSet: IDBResultSet;
@@ -77,32 +75,32 @@ type
     FInstance: IBind;
   private
     FContext: TRttiContext;
-    procedure SetAggregateFieldDefsObjectClass(const ADataSet: TDataSet;
+    procedure _SetAggregateFieldDefsObjectClass(const ADataSet: TDataSet;
       const AObject: TObject);
-    procedure SetCalcFieldDefsObjectClass(const ADataSet: TDataSet;
+    procedure _SetCalcFieldDefsObjectClass(const ADataSet: TDataSet;
       const AObject: TObject);
-    procedure FillDataSetField(const ASource, ATarget: TDataSet); overload;
-    procedure FillADTField(const AADTField: TADTField;
+    procedure _FillDataSetField(const ASource, ATarget: TDataSet); overload;
+    procedure _FillADTField(const AADTField: TADTField;
       const ATarget: TDataSet); overload;
-    procedure CreateFieldsNestedDataSet(const ADataSet: TDataSet;
+    procedure _CreateFieldsNestedDataSet(const ADataSet: TDataSet;
       const AObject: TObject; const LColumn: TColumnMapping);
-    procedure SetFieldToProperty(const AField: TField;
+    procedure _SetFieldToProperty(const AField: TField;
       const AColumn: TColumnMapping; const AObject: TObject); overload;
-    procedure SetFieldToPropertyString(const LProperty: TRttiProperty;
+    procedure _SetFieldToPropertyString(const LProperty: TRttiProperty;
       const AField: TField; const AObject: TObject);
-    procedure SetFieldToPropertyInteger(const LProperty: TRttiProperty;
+    procedure _SetFieldToPropertyInteger(const LProperty: TRttiProperty;
       const AField: TField; const AObject: TObject);
-    procedure SetFieldToPropertyDouble(const LProperty: TRttiProperty;
+    procedure _SetFieldToPropertyDouble(const LProperty: TRttiProperty;
       const AField: TField; const AObject: TObject);
-    procedure SetFieldToPropertyRecord(const LProperty: TRttiProperty;
+    procedure _SetFieldToPropertyRecord(const LProperty: TRttiProperty;
       const AColumn: TColumnMapping; const LRttiType: TRttiType;
       const AField: TField; const AObject: TObject);
-    procedure SetFieldToPropertyEnumeration(const LProperty: TRttiProperty;
+    procedure _SetFieldToPropertyEnumeration(const LProperty: TRttiProperty;
       const AColumn: TColumnMapping; const AField: TField;
       const AObject: TObject);
-    procedure FillADTField(const AADTField: TADTField;
+    procedure _FillADTField(const AADTField: TADTField;
       const AObject: TObject); overload;
-    procedure FillDataSetField(const ADataSet: TDataSet;
+    procedure _FillDataSetField(const ADataSet: TDataSet;
       const AObject: TObject); overload;
   protected
     constructor Create;
@@ -118,8 +116,8 @@ type
       const ADataSet: TDataSet);
     procedure SetFieldToField(const AResultSet: IDBResultSet;
       const ADataSet: TDataSet);
-    function GetFieldValue(const ADataSet: TDataSet; const AFieldName: string;
-      const AFieldType: TFieldType): string;
+    function GetFieldValue(const ADataSet: TDataSet; const AFieldName: String;
+      const AFieldType: TFieldType): String;
     procedure SetFieldToProperty(const ADataSet: TDataSet;
       const AObject: TObject); overload;
     procedure SetFieldToProperty(const ADataSet: IDBResultSet;
@@ -260,8 +258,8 @@ begin
 end;
 
 function TBind.GetFieldValue(const ADataSet: TDataSet;
-  const AFieldName: string;
-  const AFieldType: TFieldType): string;
+  const AFieldName: String;
+  const AFieldType: TFieldType): String;
 begin
   case AFieldType of
     ftString, ftDate, ftTime, ftDateTime, ftTimeStamp:
@@ -319,7 +317,7 @@ begin
   end;
 end;
 
-procedure TBind.CreateFieldsNestedDataSet(const ADataSet: TDataSet;
+procedure TBind._CreateFieldsNestedDataSet(const ADataSet: TDataSet;
   const AObject: TObject; const LColumn: TColumnMapping);
 var
   LDataSet: TDataSet;
@@ -355,7 +353,7 @@ begin
    Result := FInstance;
 end;
 
-procedure TBind.SetAggregateFieldDefsObjectClass(
+procedure TBind._SetAggregateFieldDefsObjectClass(
   const ADataSet: TDataSet; const AObject: TObject);
 var
   LRttiType: TRttiType;
@@ -377,13 +375,13 @@ begin
   end;
 end;
 
-procedure TBind.SetCalcFieldDefsObjectClass(const ADataSet: TDataSet;
+procedure TBind._SetCalcFieldDefsObjectClass(const ADataSet: TDataSet;
   const AObject: TObject);
 var
   LCalcField: TCalcFieldMapping;
   LCalcFields: TCalcFieldMappingList;
   LDictionary: Dictionary;
-  LFieldName: string;
+  LFieldName: String;
 begin
   LCalcFields := TMappingExplorer
                      .GetMappingCalcField(AObject.ClassType);
@@ -418,8 +416,12 @@ begin
       ADataSet.FieldByName(LFieldName).EditMask := LDictionary.EditMask;
 
     // Alignment
-    if LDictionary.Alignment in [taLeftJustify,taRightJustify,taCenter] then
+    if LDictionary.Alignment in [taLeftJustify, taRightJustify, taCenter] then
       ADataSet.FieldByName(LFieldName).Alignment := LDictionary.Alignment;
+
+    // Hidden the restriction
+    if LCalcField.IsHidden then
+      ADataSet.FieldByName(LFieldName).Visible := False;
   end;
 end;
 
@@ -429,7 +431,7 @@ var
   LColumn: TColumnMapping;
   LColumns: TColumnMappingList;
   LDictionary: Dictionary;
-  LFieldName: string;
+  LFieldName: String;
   LField: TField;
 begin
   LColumns := TMappingExplorer
@@ -543,14 +545,14 @@ begin
                     LSource := (AResultSet.GetField(LField.FieldName) as TDataSetField).NestedDataSet;
                     LTarget := (LField as TDataSetField).NestedDataSet;
                     if (LSource <> nil) and (LTarget <> nil) then
-                      FillDataSetField(LSource, LTarget);
+                      _FillDataSetField(LSource, LTarget);
                   end;
                 ftADT:
                   begin
                     LADTField := (AResultSet.GetField(LField.FieldName) as TADTField);
                     LTarget   := (LField as TDataSetField).NestedDataSet;
                     if (LTarget <> nil) and (LADTField <> nil) then
-                      FillADTField(LADTField, LTarget);
+                      _FillADTField(LADTField, LTarget);
                   end;
   //                  ftVarBytes:
   //                    begin
@@ -618,12 +620,12 @@ begin
       LField.Visible := False;
 
     // IsPrimaryKey
-	if LColumn.IsPrimaryKey then 
-	  LField.ProviderFlags := [pfInWhere, pfInKey];  
+	if LColumn.IsPrimaryKey then
+	  LField.ProviderFlags := [pfInWhere, pfInKey];
 
     // Criar TFields de campos do tipo TDataSetField
     if LColumn.FieldType in [ftDataSet] then
-      CreateFieldsNestedDataSet(ADataSet, AObject, LColumn);
+      _CreateFieldsNestedDataSet(ADataSet, AObject, LColumn);
   end;
   // Trata AutoInc
   LPrimaryKey := TMappingExplorer.GetMappingPrimaryKey(AObject.ClassType);
@@ -641,12 +643,12 @@ begin
   ADataSet.Fields[ADataSet.Fields.Count -1].Visible := False;
   ADataSet.Fields[ADataSet.Fields.Count -1].Index   := 0;
   // Adiciona Fields Calcs
-  SetCalcFieldDefsObjectClass(ADataSet, AObject);
+  _SetCalcFieldDefsObjectClass(ADataSet, AObject);
   // Adicionar Fields Aggregates
-  SetAggregateFieldDefsObjectClass(ADataSet, AObject);
+  _SetAggregateFieldDefsObjectClass(ADataSet, AObject);
 end;
 
-procedure TBind.FillADTField(const AADTField: TADTField;
+procedure TBind._FillADTField(const AADTField: TADTField;
   const ATarget: TDataSet);
 var
   LFor: Integer;
@@ -657,7 +659,7 @@ begin
   ATarget.Post;
 end;
 
-procedure TBind.FillDataSetField(const ASource, ATarget: TDataSet);
+procedure TBind._FillDataSetField(const ASource, ATarget: TDataSet);
 var
   LFor: Integer;
 begin
@@ -702,7 +704,7 @@ begin
     if not LColumn.ColumnProperty.IsWritable then
       Continue;
     try
-      SetFieldToProperty(ADataSet.GetField(LColumn.ColumnName), LColumn, AObject);
+      _SetFieldToProperty(ADataSet.GetField(LColumn.ColumnName), LColumn, AObject);
     except
       on E: Exception do
         raise Exception.Create('Problem when binding column "' +
@@ -739,7 +741,7 @@ begin
             while not LSource.Eof do
             begin
               LObject := LProperty.GetObjectTheList;
-              FillDataSetField(LSource, LObject);
+              _FillDataSetField(LSource, LObject);
               LObjectList.MethodCall('Add', [LObject]);
               LSource.Next;
             end;
@@ -754,7 +756,7 @@ begin
           if LObject = nil then
             Exit;
 
-          FillDataSetField(LSource, LObject);
+          _FillDataSetField(LSource, LObject);
         end;
       end;
     ftADT:
@@ -764,7 +766,7 @@ begin
           Exit;
 
         LADTField := (AField as TADTField);
-        FillADTField(LADTField, LObject);
+        _FillADTField(LADTField, LObject);
       end;
   end;
 end;
@@ -783,7 +785,7 @@ begin
     if not LColumn.ColumnProperty.IsWritable then
       Continue;
     try
-      SetFieldToProperty(ADataSet.FieldByName(LColumn.ColumnName), LColumn, AObject);
+      _SetFieldToProperty(ADataSet.FieldByName(LColumn.ColumnName), LColumn, AObject);
     except
       on E: Exception do
         raise Exception.CreateFmt('Problem when binding [%s->%s] (message: %s)',
@@ -792,7 +794,7 @@ begin
   end;
 end;
 
-procedure TBind.SetFieldToPropertyString(const LProperty: TRttiProperty;
+procedure TBind._SetFieldToPropertyString(const LProperty: TRttiProperty;
   const AField: TField; const AObject: TObject);
 begin
   if TVarData(AField.Value).VType <= varNull then
@@ -806,7 +808,7 @@ begin
   end;
 end;
 
-procedure TBind.SetFieldToPropertyInteger(const LProperty: TRttiProperty;
+procedure TBind._SetFieldToPropertyInteger(const LProperty: TRttiProperty;
   const AField: TField; const AObject: TObject);
 begin
   if TVarData(AField.Value).VType <= varNull then
@@ -815,7 +817,7 @@ begin
     LProperty.SetValue(AObject, AField.AsInteger);
 end;
 
-procedure TBind.SetFieldToPropertyDouble(const LProperty: TRttiProperty;
+procedure TBind._SetFieldToPropertyDouble(const LProperty: TRttiProperty;
   const AField: TField; const AObject: TObject);
 begin
   if TVarData(AField.Value).VType <= varNull then
@@ -833,7 +835,7 @@ begin
     LProperty.SetValue(AObject, AField.AsFloat);
 end;
 
-procedure TBind.SetFieldToPropertyRecord(const LProperty: TRttiProperty;
+procedure TBind._SetFieldToPropertyRecord(const LProperty: TRttiProperty;
   const AColumn: TColumnMapping; const LRttiType: TRttiType;
   const AField: TField; const AObject: TObject);
 var
@@ -842,7 +844,7 @@ begin
   /// Nullable
   if LProperty.IsNullable then
   begin
-    LProperty.SetValueNullable(AObject, LRttiType.Handle, AField.Value);
+    LProperty.SetValueNullable(AObject, LRttiType.Handle, AField.Value, False);
   end
   else if LProperty.IsBlob then
   begin
@@ -859,10 +861,10 @@ begin
       raise Exception.CreateFmt('Column [%s] must have blob value', [AColumn.ColumnName]);
   end
   else
-    LProperty.SetValueNullable(AObject, LProperty.PropertyType.Handle, AField.Value);
+    LProperty.SetValueNullable(AObject, LProperty.PropertyType.Handle, AField.Value, False);
 end;
 
-procedure TBind.SetFieldToPropertyEnumeration(
+procedure TBind._SetFieldToPropertyEnumeration(
   const LProperty: TRttiProperty; const AColumn: TColumnMapping;
   const AField: TField; const AObject: TObject);
 begin
@@ -872,13 +874,17 @@ begin
     ftInteger:
       LProperty.SetValue(AObject, LProperty.GetEnumIntegerValue(AObject, AField.Value));
     ftBoolean:
-      LProperty.SetValue(AObject, TValue.From<Variant>(AField.Value).AsType<Boolean>);
+      begin
+        if AField.Value = Null then
+          Exit;
+        LProperty.SetValue(AObject, TValue.From<Variant>(AField.Value).AsType<Boolean>);
+      end;
   else
     raise Exception.Create(cENUMERATIONSTYPEERROR);
   end;
 end;
 
-procedure TBind.FillDataSetField(const ADataSet: TDataSet;
+procedure TBind._FillDataSetField(const ADataSet: TDataSet;
   const AObject: TObject);
 var
   LColumn: TColumnMapping;
@@ -902,11 +908,11 @@ begin
 
     if LField = nil then
       Exit;
-    SetFieldToProperty(LField, LColumn, AObject);
+    _SetFieldToProperty(LField, LColumn, AObject);
   end;
 end;
 
-procedure TBind.FillADTField(const AADTField: TADTField;
+procedure TBind._FillADTField(const AADTField: TADTField;
   const AObject: TObject);
 var
   LColumn: TColumnMapping;
@@ -922,12 +928,12 @@ begin
     // classe, é verificado se o nome dessa propriedade existe na coleção
     // de dados selecionada.
     if AADTField.Fields.FindField(LColumn.ColumnName) <> nil then
-      SetFieldToProperty(AADTField.Fields.FieldByName(LColumn.ColumnName),
+      _SetFieldToProperty(AADTField.Fields.FieldByName(LColumn.ColumnName),
                          LColumn, AObject);
   end;
 end;
 
-procedure TBind.SetFieldToProperty(const AField: TField;
+procedure TBind._SetFieldToProperty(const AField: TField;
   const AColumn: TColumnMapping; const AObject: TObject);
 var
   LRttiType: TRttiType;
@@ -937,15 +943,15 @@ begin
   LRttiType := LProperty.PropertyType;
   case LRttiType.TypeKind of
     tkString, tkWString, tkUString, tkWChar, tkLString, tkChar:
-      SetFieldToPropertyString(LProperty, AField, AObject);
+      _SetFieldToPropertyString(LProperty, AField, AObject);
     tkInteger, tkSet, tkInt64:
-      SetFieldToPropertyInteger(LProperty, AField, AObject);
+      _SetFieldToPropertyInteger(LProperty, AField, AObject);
     tkFloat:
-      SetFieldToPropertyDouble(LProperty, AField, AObject);
+      _SetFieldToPropertyDouble(LProperty, AField, AObject);
     tkRecord:
-      SetFieldToPropertyRecord(LProperty, AColumn, LRttiType, AField, AObject);
+      _SetFieldToPropertyRecord(LProperty, AColumn, LRttiType, AField, AObject);
     tkEnumeration:
-      SetFieldToPropertyEnumeration(LProperty, AColumn, AField, AObject);
+      _SetFieldToPropertyEnumeration(LProperty, AColumn, AField, AObject);
     tkClass:
       SetFieldToPropertyClass(LProperty, AColumn, AField, AObject);
   end;

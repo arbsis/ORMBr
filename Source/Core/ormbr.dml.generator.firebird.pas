@@ -46,14 +46,14 @@ type
   TDMLGeneratorFirebird = class(TDMLGeneratorAbstract)
   protected
     function GetGeneratorSelect(const ACriteria: ICriteria;
-      const APageIndex: integer; const AOrderBy: string = ''): string; reintroduce;
+      const APageIndex: integer; const AOrderBy: String = ''): String; reintroduce;
   public
     constructor Create; override;
     destructor Destroy; override;
     function GeneratorSelectAll(AClass: TClass;
-      APageSize: Integer; AID: TValue): string; override;
-    function GeneratorSelectWhere(AClass: TClass; AWhere: string;
-      AOrderBy: string; APageSize: Integer): string; override;
+      APageSize: Integer; AID: TValue): String; override;
+    function GeneratorSelectWhere(AClass: TClass; AWhere: String;
+      AOrderBy: String; APageSize: Integer): String; override;
     function GeneratorAutoIncCurrentValue(AObject: TObject;
       AAutoInc: TDMLCommandAutoInc): Int64; override;
     function GeneratorAutoIncNextValue(AObject: TObject;
@@ -77,9 +77,9 @@ begin
 end;
 
 function TDMLGeneratorFirebird.GetGeneratorSelect(const ACriteria: ICriteria;
-  const APageIndex: integer; const AOrderBy: string): string;
+  const APageIndex: integer; const AOrderBy: String): String;
 var
-  LFirstColumn: string;
+  LFirstColumn: String;
 begin
   LFirstColumn := ACriteria.AST.Select.Columns.Columns[0].Name;
   if APageIndex > -1 then
@@ -91,12 +91,16 @@ begin
 end;
 
 function TDMLGeneratorFirebird.GeneratorSelectAll(AClass: TClass;
-  APageSize: Integer; AID: TValue): string;
+  APageSize: Integer; AID: TValue): String;
 var
   LCriteria: ICriteria;
   LTable: TTableMapping;
+  LKey: string;
 begin
-  if not FQueryCache.TryGetValue(AClass.ClassName, Result) then
+  LKey := AClass.ClassName + '-SELECT';
+  if APageSize > -1 then
+    LKey := LKey + '-PAGINATE';
+  if not FQueryCache.TryGetValue(LKey, Result) then
   begin
     LCriteria := GetCriteriaSelect(AClass, AID);
     LCriteria.AST.Select
@@ -105,7 +109,7 @@ begin
                                                      .Columns
                                                      .Columns[0].Name;
     Result := GetGeneratorSelect(LCriteria, APageSize);
-    FQueryCache.AddOrSetValue(AClass.ClassName, Result);
+    FQueryCache.AddOrSetValue(LKey, Result);
   end;
   LTable := TMappingExplorer.GetMappingTable(AClass);
   // Where
@@ -115,13 +119,17 @@ begin
 end;
 
 function TDMLGeneratorFirebird.GeneratorSelectWhere(AClass: TClass;
-  AWhere: string; AOrderBy: string; APageSize: Integer): string;
+  AWhere: String; AOrderBy: String; APageSize: Integer): String;
 var
   LCriteria: ICriteria;
   LScopeWhere: String;
   LScopeOrderBy: String;
+  LKey: string;
 begin
-  if not FQueryCache.TryGetValue(AClass.ClassName, Result) then
+  LKey := AClass.ClassName + '-SELECT';
+  if APageSize > -1 then
+    LKey := LKey + '-PAGINATE';
+  if not FQueryCache.TryGetValue(LKey, Result) then
   begin
     LCriteria := GetCriteriaSelect(AClass, -1);
     LCriteria.AST.Select
@@ -130,7 +138,7 @@ begin
                                                      .Columns
                                                      .Columns[0].Name;
     Result := GetGeneratorSelect(LCriteria, APageSize);
-    FQueryCache.AddOrSetValue(AClass.ClassName, Result);
+    FQueryCache.AddOrSetValue(LKey, Result);
   end;
   // Scope Where
   LScopeWhere := GetGeneratorQueryScopeWhere(AClass);

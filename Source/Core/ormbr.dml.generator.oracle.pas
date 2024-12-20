@@ -47,20 +47,20 @@ type
   TDMLGeneratorOracle = class(TDMLGeneratorAbstract)
   protected
     function GetGeneratorSelect(const ACriteria: ICriteria;
-      AOrderBy: string = ''): string; override;
+      AOrderBy: String = ''): String; override;
   public
     constructor Create; override;
     destructor Destroy; override;
     function GeneratorSelectAll(AClass: TClass;
-      APageSize: Integer; AID: TValue): string; override;
-    function GeneratorSelectWhere(AClass: TClass; AWhere: string;
-      AOrderBy: string; APageSize: Integer): string; override;
+      APageSize: Integer; AID: TValue): String; override;
+    function GeneratorSelectWhere(AClass: TClass; AWhere: String;
+      AOrderBy: String; APageSize: Integer): String; override;
     function GeneratorAutoIncCurrentValue(AObject: TObject;
       AAutoInc: TDMLCommandAutoInc): Int64; override;
     function GeneratorAutoIncNextValue(AObject: TObject;
       AAutoInc: TDMLCommandAutoInc): Int64; override;
-    function GeneratorPageNext(const ACommandSelect: string;
-      APageSize: Integer; APageNext: Integer): string; override;
+    function GeneratorPageNext(const ACommandSelect: String;
+      APageSize: Integer; APageNext: Integer): String; override;
   end;
 
 implementation
@@ -83,8 +83,8 @@ begin
   inherited;
 end;
 
-function TDMLGeneratorOracle.GeneratorPageNext(const ACommandSelect: string;
-  APageSize: Integer; APageNext: Integer): string;
+function TDMLGeneratorOracle.GeneratorPageNext(const ACommandSelect: String;
+  APageSize: Integer; APageNext: Integer): String;
 begin
   if APageSize > -1 then
     Result := Format(ACommandSelect, [IntToStr(APageNext + APageSize), IntToStr(APageNext)])
@@ -93,16 +93,20 @@ begin
 end;
 
 function TDMLGeneratorOracle.GeneratorSelectAll(AClass: TClass;
-  APageSize: Integer; AID: TValue): string;
+  APageSize: Integer; AID: TValue): String;
 var
   LCriteria: ICriteria;
   LTable: TTableMapping;
+  LKey: string;
 begin
-  if not FQueryCache.TryGetValue(AClass.ClassName, Result) then
+  LKey := AClass.ClassName + '-SELECT';
+  if APageSize > -1 then
+    LKey := LKey + '-PAGINATE';
+  if not FQueryCache.TryGetValue(LKey, Result) then
   begin
     LCriteria := GetCriteriaSelect(AClass, AID);
     Result := LCriteria.AsString;
-    FQueryCache.AddOrSetValue(AClass.ClassName, Result);
+    FQueryCache.AddOrSetValue(LKey, Result);
   end;
   if APageSize > -1 then
     Result := Format(SELECTROW, [Result]);
@@ -116,20 +120,24 @@ begin
     Result := Result + sLineBreak + GetGeneratorSelect(LCriteria);
 end;
 
-function TDMLGeneratorOracle.GeneratorSelectWhere(AClass: TClass; AWhere: string;
-  AOrderBy: string; APageSize: Integer): string;
+function TDMLGeneratorOracle.GeneratorSelectWhere(AClass: TClass; AWhere: String;
+  AOrderBy: String; APageSize: Integer): String;
 var
   LCriteria: ICriteria;
   LScopeWhere: String;
   LScopeOrderBy: String;
+  LKey: string;
 begin
-  if not FQueryCache.TryGetValue(AClass.ClassName, Result) then
+  LKey := AClass.ClassName + '-SELECT';
+  if APageSize > -1 then
+    LKey := LKey + '-PAGINATE';
+  if not FQueryCache.TryGetValue(LKey, Result) then
   begin
     LCriteria := GetCriteriaSelect(AClass, -1);
     Result := LCriteria.AsString;
     if APageSize > -1 then
       Result := Format(SELECTROW, [Result]);
-    FQueryCache.AddOrSetValue(AClass.ClassName, Result);
+    FQueryCache.AddOrSetValue(LKey, Result);
   end;
   // Scope Where
   LScopeWhere := GetGeneratorQueryScopeWhere(AClass);
@@ -154,7 +162,7 @@ begin
 end;
 
 function TDMLGeneratorOracle.GetGeneratorSelect(const ACriteria: ICriteria;
-  AOrderBy: string): string;
+  AOrderBy: String): String;
 begin
   Result := '   WHERE ROWNUM <= %s) ' + sLineBreak +
             'WHERE ROWINI > %s';

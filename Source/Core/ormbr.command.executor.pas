@@ -260,6 +260,8 @@ begin
                                            AProperty.PropertyType
                                                     .AsInstance.MetaclassType,
                                            AAssociation);
+  if LResultSet = nil then
+    Exit;
   try
     while LResultSet.NotEof do
     begin

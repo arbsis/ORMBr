@@ -163,9 +163,12 @@ begin
   // Association Multi-Columns
   for LFor := 0 to AAssociation.ColumnsNameRef.Count -1 do
   begin
+    var L := GetValue(LFor);
+    if L = EmptyStr then
+      Exit(EmptyStr);
     Result := Result + ' WHERE '
                      + LTable.Name + '.' + AAssociation.ColumnsNameRef[LFor]
-                     + ' = ' + GetValue(LFor);
+                     + ' = ' + L;
   end;
   // OrderBy
   LOrderBy := TMappingExplorer.GetMappingOrderBy(AClass);

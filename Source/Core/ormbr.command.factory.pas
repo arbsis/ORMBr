@@ -215,6 +215,8 @@ function TDMLCommandFactory.GeneratorSelectOneToOne(const AOwner: TObject;
   const AClass: TClass; const AAssociation: TAssociationMapping): IDBResultSet;
 begin
   FDMLCommand := FCommandSelecter.GenerateSelectOneToOne(AOwner, AClass, AAssociation);
+  if FDMLCommand = EmptyStr then
+    Exit;
   _SendCommandMonitor(FDMLCommand, FCommandSelecter.Params);
   Result := FConnection.CreateResultSet(FDMLCommand);
 end;

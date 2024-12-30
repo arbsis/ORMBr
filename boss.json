@@ -1,14 +1,14 @@
 {
-	"name": "ORMBr",
+	"name": "ORMBr - arb",
 	"description": "ORMBr Framework for Delphi",
 	"version": "1.1.8",
 	"homepage": "www.ormbr.com.br/",
 	"mainsrc": "Source/",
 	"projects": [],
 	"dependencies": {
-		"github.com/arbsis/dbcbr": "^0.0.1",
-		"github.com/arbsis/dbebr": "^0.0.1",
-		"github.com/arbsis/cqlbr": "^0.0.1",
-		"github.com/arbsis/jsonbr": "^0.0.1"
+		"github.com/git@github.com:arbsis/dbcbr": "^0.0.1",
+		"github.com/git@github.com:arbsis/dbebr": "^0.0.1",
+		"github.com/git@github.com:arbsis/cqlbr": "^0.0.1",
+		"github.com/git@github.com:arbsis/jsonbr": "^0.0.1"
 	}
 }

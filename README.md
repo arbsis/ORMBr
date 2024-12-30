@@ -13,13 +13,13 @@ boss install "https://github.com/HashLoad/ormbr"
 
 ## ⚠ Dependências
 
-:heavy_check_mark: [DBCBr Framework for Delphi](https://github.com/hashload/dbcbr)
+:heavy_check_mark: [DBCBr Framework for Delphi](https://github.com/arbsis/dbcbr)
 
-:heavy_check_mark: [DBEBr Framework for Delphi/Lazarus](https://github.com/hashload/dbebr)
+:heavy_check_mark: [DBEBr Framework for Delphi/Lazarus](https://github.com/arbsis/dbebr)
 
-:heavy_check_mark: [CQLBr Framework for Delphi/Lazarus](https://github.com/hashload/cqlbr)
+:heavy_check_mark: [CQLBr Framework for Delphi/Lazarus](https://github.com/arbsis/cqlbr)
 
-:heavy_check_mark: [JSONBr Framework for Delphi](https://github.com/hashload/jsonbr)
+:heavy_check_mark: [JSONBr Framework for Delphi](https://github.com/arbsis/jsonbr)
 
 ## ⚡️ Como usar
 ```Delphi

@@ -6,7 +6,7 @@ Embarcadero Delphi XE e superior.
 ## ⚙️ Instalação
 Instalação usando o [`boss install`]
 ```sh
-boss install "https://github.com/HashLoad/ormbr"
+boss install "https://github.com/arbsis/ormbr"
 ```
 
 ## ⚠ Dependências

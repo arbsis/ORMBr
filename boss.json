@@ -6,11 +6,12 @@
 	"mainsrc": "Source/",
 	"projects": [
 		"Components/Packages/Delphi/ORMBrCore.dproj",
-		"Components/Packages/Delphi/ORMBrDriversLinks.dproj"],
+		"Components/Packages/Delphi/ORMBrDriversLinks.dproj"
+	],
 	"dependencies": {
-		"github.com/git@github.com:arbsis/dbcbr": "^0.0.1",
-		"github.com/git@github.com:arbsis/dbebr": "^0.0.1",
-		"github.com/git@github.com:arbsis/cqlbr": "^0.0.1",
-		"github.com/git@github.com:arbsis/jsonbr": "^0.0.1"
+		"github.com/git@github.com:arbsis/cqlbr": "^1.1.0",
+		"github.com/git@github.com:arbsis/dbcbr": "^1.1.0",
+		"github.com/git@github.com:arbsis/dbebr": "^1.1.0",
+		"github.com/git@github.com:arbsis/jsonbr": "^1.1.0"
 	}
 }

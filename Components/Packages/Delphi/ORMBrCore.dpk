@@ -27,15 +27,15 @@ package ORMBrCore;
 {$ENDIF IMPLICITBUILDING}
 {$DESCRIPTION 'ORMBr - Core'}
 {$RUNONLY}
-{$IMPLICITBUILD ON}
+{$IMPLICITBUILD OFF}
 
 requires
   rtl,
   vcl,
   vclimg,
   dbrtl,
-  DBCBr,
-  JSONBr;
+  DBEBrCore,
+  DBCBrCore;
 
 contains
   ormbr.core.consts in '..\..\..\Source\Core\ormbr.core.consts.pas',
@@ -76,7 +76,11 @@ contains
   ormbr.command.executor.abstract in '..\..\..\Source\Core\ormbr.command.executor.abstract.pas',
   ormbr.command.executor in '..\..\..\Source\Core\ormbr.command.executor.pas',
   ormbr.register.middleware in '..\..\..\Source\Middleware\ormbr.register.middleware.pas',
-  ormbr.dataset.abstract in '..\..\..\Source\Dataset\ormbr.dataset.abstract.pas';
+  jsonbr in '..\..\..\..\JSONBr\Source\jsonbr.pas',
+  jsonbr.builders in '..\..\..\..\JSONBr\Source\Core\jsonbr.builders.pas',
+  jsonbr.reader in '..\..\..\..\JSONBr\Source\Core\jsonbr.reader.pas',
+  jsonbr.utils in '..\..\..\..\JSONBr\Source\Core\jsonbr.utils.pas',
+  jsonbr.writer in '..\..\..\..\JSONBr\Source\Core\jsonbr.writer.pas';
 
 end.
 

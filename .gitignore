@@ -11,7 +11,6 @@
 *.exe
 *.map
 *.rsm
-*.json
 __history/
 __recovery/
 Win32/

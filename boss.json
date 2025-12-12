@@ -6,9 +6,9 @@
 	"mainsrc": "Source/",
 	"projects": [],
 	"dependencies": {
-		"github.com/git@github.com:arbsis/dbcbr": "^0.0.1",
-		"github.com/git@github.com:arbsis/dbebr": "^0.0.1",
-		"github.com/git@github.com:arbsis/cqlbr": "^0.0.1",
-		"github.com/git@github.com:arbsis/jsonbr": "^0.0.1"
+		"github.com/git@github.com:arbsis/dbcbr": "^1.0.5",
+		"github.com/git@github.com:arbsis/dbebr": "^1.0.5",
+		"github.com/git@github.com:arbsis/cqlbr": "^1.0.5",
+		"github.com/git@github.com:arbsis/jsonbr": "^1.0.5"
 	}
 }

@@ -4,9 +4,7 @@
 	"version": "1.1.8",
 	"homepage": "www.ormbr.com.br/",
 	"mainsrc": "Source/",
-	"projects": [
-		"Components/Packages/Delphi/ORMBrCore.dproj",
-		"Components/Packages/Delphi/ORMBrDriversLinks.dproj"],
+	"projects": [],
 	"dependencies": {
 		"github.com/git@github.com:arbsis/dbcbr": "^0.0.1",
 		"github.com/git@github.com:arbsis/dbebr": "^0.0.1",

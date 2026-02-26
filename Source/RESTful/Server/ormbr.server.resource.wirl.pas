@@ -19,7 +19,7 @@ unit ormbr.server.resource.wirl;
 interface
 
 uses
-  SysUtils,
+  System.SysUtils,
   // WiRL
   WiRL.Core.Registry,
   WiRL.Core.Attributes,

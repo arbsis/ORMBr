@@ -22,11 +22,11 @@ unit ormbr.server.resource;
 interface
 
 uses
-  Classes,
-  SysUtils,
-  Variants,
-  Rtti,
-  Generics.Collections,
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+  System.Rtti,
+  System.Generics.Collections,
   // ORMBr
   dbcbr.mapping.repository,
   dbcbr.mapping.explorer,

@@ -19,11 +19,11 @@ unit ormbr.client.dmvc;
 interface
 
 uses
-  DB,
-  SysUtils,
-  StrUtils,
-  Classes,
-  Generics.Collections,
+  Data.DB,
+  System.SysUtils,
+  System.StrUtils,
+  System.Classes,
+  System.Generics.Collections,
   ormbr.client,
   ormbr.client.base,
   ormbr.client.methods,

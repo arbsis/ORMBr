@@ -30,13 +30,13 @@ unit ormbr.db.manager.clientdataset;
 interface
 
 uses
-  DB,
-  Rtti,
-  DBClient,
-  Classes,
-  SysUtils,
-  Variants,
-  Generics.Collections,
+  Data.DB,
+  System.Rtti,
+  Datasnap.DBClient,
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+  System.Generics.Collections,
   dbebr.factory.interfaces,
   ormbr.dataset.base.adapter,
   ormbr.dataset.clientdataset;

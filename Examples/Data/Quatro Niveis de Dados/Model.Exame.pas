@@ -3,10 +3,10 @@ unit Model.Exame;
 interface
 
 uses
-  DB,
-  Classes,
-  SysUtils,
-  Generics.Collections,
+  Data.DB,
+  System.Classes,
+  System.SysUtils,
+  System.Generics.Collections,
   /// Units Associadas
   Model.Procedimento,
   /// orm

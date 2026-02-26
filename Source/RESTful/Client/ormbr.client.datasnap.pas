@@ -21,18 +21,18 @@ unit ormbr.client.datasnap;
 interface
 
 uses
-  DB,
-  SysUtils,
-  StrUtils,
-  Classes,
+  Data.DB,
+  System.SysUtils,
+  System.StrUtils,
+  System.Classes,
   ormbr.client,
   ormbr.client.base,
   ormbr.client.methods,
   ormbr.client.restexception,
   {$IFDEF DELPHI15_UP}
-  JSON,
+  System.JSON,
   {$ELSE}
-  DBXJSON,
+  Data.DBXJSON,
   {$ENDIF}
   REST.Client,
   REST.Types,

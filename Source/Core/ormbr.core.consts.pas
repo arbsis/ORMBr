@@ -29,7 +29,7 @@ unit ormbr.core.consts;
 interface
 
 uses
-  TypInfo;
+  System.TypInfo;
 
 const
   cENUMERATIONSTYPEERROR = 'Invalid type. Type enumerator supported [ftBoolean, ftInteger, ftFixedChar, ftString]';

@@ -31,14 +31,14 @@ unit ormbr.dml.generator;
 interface
 
 uses
-  DB,
-  Rtti,
-  SysUtils,
-  Classes,
-  StrUtils,
-  Variants,
-  TypInfo,
-  Generics.Collections,
+  Data.DB,
+  System.Rtti,
+  System.SysUtils,
+  System.Classes,
+  System.StrUtils,
+  System.Variants,
+  System.TypInfo,
+  System.Generics.Collections,
   // ORMBr
   ormbr.criteria,
   ormbr.dml.interfaces,

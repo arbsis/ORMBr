@@ -3,9 +3,9 @@ unit ormbr.viacep;
 interface
 
 uses
-  Classes,
-  DB,
-  SysUtils,
+  System.Classes,
+  Data.DB,
+  System.SysUtils,
 
   dbcbr.mapping.attributes,
   dbcbr.types.mapping,

@@ -3,22 +3,22 @@
 interface
 
 uses
-  Generics.Collections,
-  Generics.Defaults,
+  System.Generics.Collections,
+  System.Generics.Defaults,
 
-  Windows,
-  Messages,
-  SysUtils,
-  Variants,
-  Classes,
-  Graphics,
-  Controls,
-  Forms,
-  Dialogs,
-  Buttons,
-  ExtCtrls,
-  StdCtrls,
-  ComCtrls;
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.Buttons,
+  Vcl.ExtCtrls,
+  Vcl.StdCtrls,
+  Vcl.ComCtrls;
 
 type
   TPacotes = TList<TCheckBox>;
@@ -106,7 +106,7 @@ type
 implementation
 
 uses
-  StrUtils;
+  System.StrUtils;
 
 {$R *.dfm}
 

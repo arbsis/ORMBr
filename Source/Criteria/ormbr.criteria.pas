@@ -263,7 +263,7 @@ function CreateCriteria: ICriteria;
 implementation
 
 uses
-  {$IFNDEF FPC}SysUtils{$ELSE}SysUtils{$ENDIF},
+  {$IFNDEF FPC}System.SysUtils{$ELSE}{$ENDIF},
   ormbr.criteria.serialize;
 
 type

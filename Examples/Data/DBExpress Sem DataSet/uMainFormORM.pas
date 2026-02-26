@@ -3,24 +3,24 @@ unit uMainFormORM;
 interface
 
 uses
-  Windows,
-  Messages,
-  SysUtils,
-  Variants,
-  Classes,
-  Graphics,
-  Controls,
-  Forms,
-  Dialogs,
-  DB,
-  Grids,
-  DBGrids,
-  StdCtrls,
-  Mask,
-  DBClient,
-  DBCtrls,
-  ExtCtrls,
-  Generics.Collections,
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DbGrids,
+  Vcl.StdCtrls,
+  Vcl.Mask,
+  Datasnap.DBClient,
+  Vcl.DBCtrls,
+  Vcl.ExtCtrls,
+  System.Generics.Collections,
   /// orm factory
   dbebr.factory.interfaces,
   dbebr.factory.dbexpress,
@@ -33,8 +33,8 @@ uses
   ormbr.model.detail,
   ormbr.model.lookup,
   ormbr.model.client,
-  DbxSqlite,
-  SqlExpr;
+  Data.DbxSqlite,
+  Data.SqlExpr;
 
 type
   TStringGridHack = class(TStringGrid)
@@ -101,7 +101,7 @@ var
 implementation
 
 uses
-  StrUtils, ormbr.form.monitor;
+  System.StrUtils, ormbr.form.monitor;
 
 {$R *.dfm}
 

@@ -3,9 +3,9 @@ unit SVN_Class;
 interface
 
 uses
-  SysUtils, Windows, Dialogs, Menus, Registry, ShellApi,
-  Classes, Controls, Graphics, ImgList, ExtCtrls, ActnList,
-  Comobj, ActiveX, Variants;
+  System.SysUtils, Winapi.Windows, Vcl.Dialogs, Vcl.Menus, System.Win.Registry, Winapi.ShellAPI,
+  System.Classes, Vcl.Controls, Vcl.Graphics, Vcl.ImgList, Vcl.ExtCtrls, Vcl.ActnList,
+  System.Win.ComObj, Winapi.ActiveX, System.Variants;
 
 var
   TSVNTortoisePath: String;

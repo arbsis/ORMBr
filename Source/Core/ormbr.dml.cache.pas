@@ -30,7 +30,7 @@ unit ormbr.dml.cache;
 interface
 
 uses
-  Generics.Collections;
+  System.Generics.Collections;
 
 type
   TQueryCache = class

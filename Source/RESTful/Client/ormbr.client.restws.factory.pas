@@ -19,8 +19,8 @@ unit ormbr.client.restws.factory;
 interface
 
 uses
-  Classes,
-  SysUtils,
+  System.Classes,
+  System.SysUtils,
   ormbr.restfactory.connection,
   ormbr.client.restdriver.ws,
   ormbr.client.methods;

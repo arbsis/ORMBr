@@ -10,12 +10,12 @@ unit Server.Forms.Main;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics,
-  Controls, Forms, Dialogs, StdCtrls, ExtCtrls,
-  ActnList,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls,
+  Vcl.ActnList,
   System.Actions,
 
-  Diagnostics,
+  System.Diagnostics,
 
   MARS.Core.Engine,
   MARS.http.Server.Indy,

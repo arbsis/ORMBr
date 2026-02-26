@@ -4,10 +4,10 @@ unit ormbr.model.master;
 interface
 
 uses
-  Classes,
-  DB,
-  SysUtils,
-  Generics.Collections,
+  System.Classes,
+  Data.DB,
+  System.SysUtils,
+  System.Generics.Collections,
   // orm
   dbcbr.mapping.attributes,
   dbcbr.types.mapping,

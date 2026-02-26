@@ -30,12 +30,12 @@ unit ormbr.db.manager.fdmemtable;
 interface
 
 uses
-  DB,
-  Rtti,
-  Classes,
-  SysUtils,
-  Variants,
-  Generics.Collections,
+  Data.DB,
+  System.Rtti,
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+  System.Generics.Collections,
   FireDAC.Comp.Client,
   dbebr.factory.interfaces,
   ormbr.dataset.base.adapter,

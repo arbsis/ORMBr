@@ -25,12 +25,12 @@ unit ormbr.utils;
 interface
 
 uses
-  Rtti,
-  Classes,
-  SysUtils,
-  StrUtils,
-  Variants,
-  Generics.Collections;
+  System.Rtti,
+  System.Classes,
+  System.SysUtils,
+  System.StrUtils,
+  System.Variants,
+  System.Generics.Collections;
 
 type
   TStrArray = array of String;

@@ -30,10 +30,10 @@ unit ormbr.client;
 interface
 
 uses
-  DB,
-  SysUtils,
-  StrUtils,
-  Classes,
+  Data.DB,
+  System.SysUtils,
+  System.StrUtils,
+  System.Classes,
   ormbr.client.methods,
   ormbr.client.base;
 

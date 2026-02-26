@@ -29,7 +29,7 @@ unit VBScript_RegExp_55_TLB;
 {$VARPROPSETTER ON}
 interface
 
-uses Windows, ActiveX, Classes, Graphics, OleServer, StdVCL, Variants;
+uses Winapi.Windows, Winapi.ActiveX, System.Classes, Vcl.Graphics, Vcl.OleServer, System.Win.StdVCL, System.Variants;
   
 
 // *********************************************************************//
@@ -351,7 +351,7 @@ type
 
 implementation
 
-uses ComObj;
+uses System.Win.ComObj;
 
 class function CoRegExp.Create: IRegExp2;
 begin

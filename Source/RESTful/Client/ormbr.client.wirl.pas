@@ -19,12 +19,12 @@ unit ormbr.client.wirl;
 interface
 
 uses
-  DB,
-  JSON,
-  SysUtils,
-  StrUtils,
-  Classes,
-  Generics.Collections,
+  Data.DB,
+  System.JSON,
+  System.SysUtils,
+  System.StrUtils,
+  System.Classes,
+  System.Generics.Collections,
   ormbr.client,
   ormbr.client.base,
   ormbr.client.methods,

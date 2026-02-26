@@ -32,12 +32,12 @@ unit ormbr.objects.helper;
 interface
 
 uses
-  DB,
-  Rtti,
-  Variants,
-  SysUtils,
-  TypInfo, {Delphi 2010}
-  Generics.Collections,
+  Data.DB,
+  System.Rtti,
+  System.Variants,
+  System.SysUtils,
+  System.TypInfo, {Delphi 2010}
+  System.Generics.Collections,
   ormbr.core.consts,
   ormbr.rtti.helper,
   dbcbr.mapping.popular,

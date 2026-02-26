@@ -31,8 +31,8 @@ unit ormbr.restfactory.interfaces;
 interface
 
 uses
-  DB,
-  SysUtils,
+  Data.DB,
+  System.SysUtils,
   ormbr.client.methods;
 
 type

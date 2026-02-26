@@ -30,9 +30,9 @@ unit ormbr.objectset.abstract;
 interface
 
 uses
-  Rtti,
-  Variants,
-  Generics.Collections,
+  System.Rtti,
+  System.Variants,
+  System.Generics.Collections,
   ormbr.session.abstract;
 
 type

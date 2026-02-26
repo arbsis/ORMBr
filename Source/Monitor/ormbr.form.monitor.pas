@@ -32,20 +32,20 @@ unit ormbr.form.monitor;
 interface
 
 uses
-  DB,
-  Forms,
-  Classes,
-  Controls,
-  SysUtils,
-  Variants,
-  StdCtrls,
+  Data.DB,
+  Vcl.Forms,
+  System.Classes,
+  Vcl.Controls,
+  System.SysUtils,
+  System.Variants,
+  Vcl.StdCtrls,
   {$IFDEF MONITORRESTFULCLIENT}
   ormbr.restfactory.interfaces,
   {$ELSE}
   dbebr.factory.interfaces,
   {$ENDIF}
-  TypInfo,
-  ComCtrls;
+  System.TypInfo,
+  Vcl.ComCtrls;
 
 type
   TCommandMonitor = class(TForm, ICommandMonitor)

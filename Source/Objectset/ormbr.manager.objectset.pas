@@ -32,10 +32,10 @@ unit ormbr.manager.objectset;
 interface
 
 uses
-  Rtti,
-  SysUtils,
-  Variants,
-  Generics.Collections,
+  System.Rtti,
+  System.SysUtils,
+  System.Variants,
+  System.Generics.Collections,
   // ORMBr
   {$IFDEF DRIVERRESTFUL}
     ormbr.restfactory.interfaces,

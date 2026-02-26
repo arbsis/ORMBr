@@ -29,14 +29,14 @@ unit ormbr.command.inserter;
 interface
 
 uses
-  DB,
-  Rtti,
-  Math,
-  StrUtils,
-  SysUtils,
-  TypInfo,
-  Variants,
-  Types,
+  Data.DB,
+  System.Rtti,
+  System.Math,
+  System.StrUtils,
+  System.SysUtils,
+  System.TypInfo,
+  System.Variants,
+  System.Types,
   ormbr.command.abstract,
   ormbr.dml.commands,
   ormbr.core.consts,

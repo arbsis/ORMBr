@@ -3,15 +3,15 @@ unit Server.Resource;
 interface
 
 uses
-  Classes,
-  SysUtils,
-  Generics.Collections,
+  System.Classes,
+  System.SysUtils,
+  System.Generics.Collections,
   /// Delphi MVC
   MVCFramework.Commons,
   MVCFramework,
 
   /// JSON
-  JSON,
+  System.JSON,
   /// ORMBr JSON
   ormbr.rest.json,
   ormbr.json.utils,

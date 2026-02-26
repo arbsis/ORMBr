@@ -3,7 +3,7 @@ unit ormbr.link.reg;
 interface
 
 uses
-  Classes,
+  System.Classes,
   DesignIntf,
   DesignEditors,
   ormbr.driver.link.firebird,

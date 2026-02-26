@@ -29,9 +29,9 @@ unit ormbr.command.selecter;
 interface
 
 uses
-  SysUtils,
-  Rtti,
-  DB,
+  System.SysUtils,
+  System.Rtti,
+  Data.DB,
   ormbr.command.abstract,
   dbebr.factory.interfaces,
   dbcbr.mapping.classes,

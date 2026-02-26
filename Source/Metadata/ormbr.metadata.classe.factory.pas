@@ -30,8 +30,8 @@ unit ormbr.metadata.classe.factory;
 interface
 
 uses
-  SysUtils,
-  Rtti,
+  System.SysUtils,
+  System.Rtti,
   dbebr.factory.interfaces,
   dbcbr.metadata.model,
   dbcbr.metadata.extract,

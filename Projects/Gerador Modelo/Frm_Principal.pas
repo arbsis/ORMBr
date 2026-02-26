@@ -3,10 +3,10 @@
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, WideStrings, Buttons, StdCtrls, DB, ExtCtrls,
-  ComCtrls, FMTBcd, MidasLib, DBClient, Menus, DBCtrls,
-  Mask, AnsiStrings,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
+  Vcl.Dialogs, System.WideStrings, Vcl.Buttons, Vcl.StdCtrls, Data.DB, Vcl.ExtCtrls,
+  Vcl.ComCtrls, Data.FmtBcd, MidasLib, Datasnap.DBClient, Vcl.Menus, Vcl.DBCtrls,
+  Vcl.Mask, System.AnsiStrings,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Error,
   FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def, FireDAC.Stan.Pool,
   FireDAC.Stan.Async, FireDAC.Phys, FireDAC.Phys.FB, FireDAC.Phys.FBDef,
@@ -15,8 +15,8 @@ uses
   FireDAC.Phys.SQLiteDef, FireDAC.Phys.MySQLDef, FireDAC.Phys.MSSQLDef,
   FireDAC.Phys.IBBase, FireDAC.Phys.ODBCBase, FireDAC.Phys.MSSQL,
   FireDAC.Phys.MySQL, FireDAC.Phys.SQLite, FireDAC.Comp.UI,
-  Generics.Collections, Vcl.Grids, Vcl.DBGrids, Vcl.WinXCtrls, Vcl.Imaging.pngimage,
-  Vcl.DBCGrids,StrUtils, FireDAC.Phys.OracleDef, FireDAC.Phys.DB2Def,
+  System.Generics.Collections, Vcl.Grids, Vcl.DBGrids, Vcl.WinXCtrls, Vcl.Imaging.pngimage,
+  Vcl.DBCGrids,System.StrUtils, FireDAC.Phys.OracleDef, FireDAC.Phys.DB2Def,
   FireDAC.Phys.IBDef, FireDAC.Phys.IB, FireDAC.Phys.DB2, FireDAC.Phys.Oracle,
   FireDAC.Phys.PGDef, FireDAC.Phys.PG, FireDAC.Phys.SQLiteWrapper.Stat;
 

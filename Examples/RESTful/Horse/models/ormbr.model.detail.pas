@@ -3,10 +3,10 @@ unit ormbr.model.detail;
 interface
 
 uses
-  Classes, 
-  DB, 
-  SysUtils, 
-  Generics.Collections, 
+  System.Classes, 
+  Data.DB, 
+  System.SysUtils, 
+  System.Generics.Collections, 
   /// orm 
   ormbr.types.lazy,
   ormbr.types.nullable,

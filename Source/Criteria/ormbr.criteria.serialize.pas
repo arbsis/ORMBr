@@ -79,7 +79,7 @@ function CreateSQLSerializer(const ast: IGpSQLAST): IGpSQLASTSerializer; overloa
 implementation
 
 uses
-  {$IFNDEF FPC}SysUtils{$ELSE}SysUtils{$ENDIF};
+  {$IFNDEF FPC}System.SysUtils{$ELSE}{$ENDIF};
 
 type
   TGpSQLExpressionSerializer = class(TInterfacedObject, IGpSQLExpressionSerializer)

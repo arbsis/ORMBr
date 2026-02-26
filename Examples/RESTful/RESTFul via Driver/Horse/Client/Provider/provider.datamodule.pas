@@ -3,9 +3,9 @@ unit provider.datamodule;
 interface
 
 uses
-  DB,
-  SysUtils,
-  Classes,
+  Data.DB,
+  System.SysUtils,
+  System.Classes,
   ormbr.client,
   ormbr.client.base,
   ormbr.client.methods,

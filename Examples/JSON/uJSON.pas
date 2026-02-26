@@ -5,21 +5,21 @@ unit uJSON;
 interface
 
 uses
-  Rtti,
-  TypInfo,
-  SysUtils,
-  Variants,
-  Classes,
-  Graphics,
-  Controls,
-  Forms,
-  Dialogs,
-  StdCtrls,
-  DBXJSON,
+  System.Rtti,
+  System.TypInfo,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Vcl.StdCtrls,
+  Data.DBXJSON,
   {$IFDEF DELPHI15_UP}
-  JSON,
+  System.JSON,
   {$ENDIF DELPHI15_UP}
-  Generics.Collections;
+  System.Generics.Collections;
 
 type
   TForm4 = class(TForm)

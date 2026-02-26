@@ -30,9 +30,9 @@ unit ormbr.reg;
 interface
 
 uses
-  SysUtils,
-  Windows,
-  Graphics,
+  System.SysUtils,
+  Winapi.Windows,
+  Vcl.Graphics,
   ToolsApi;
 
 implementation

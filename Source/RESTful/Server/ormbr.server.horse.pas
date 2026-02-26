@@ -19,9 +19,9 @@ unit ormbr.server.horse;
 interface
 
 uses
-  Classes,
-  SysUtils,
-  StrUtils,
+  System.Classes,
+  System.SysUtils,
+  System.StrUtils,
   ormbr.restcomponent,
   // DBEBr Conexão
   dbebr.factory.interfaces,

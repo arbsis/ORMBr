@@ -3,7 +3,7 @@ unit ormbr.criteria.resultset;
 interface
 
 uses
-  Generics.Collections,
+  System.Generics.Collections,
 //  ormbr.criteria,
   dbebr.factory.interfaces,
   ormbr.bind;

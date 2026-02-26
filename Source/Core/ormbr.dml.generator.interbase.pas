@@ -28,9 +28,9 @@ unit ormbr.dml.generator.interbase;
 interface
 
 uses
-  SysUtils,
-  StrUtils,
-  Rtti,
+  System.SysUtils,
+  System.StrUtils,
+  System.Rtti,
   ormbr.dml.generator.firebird,
   ormbr.driver.register,
   dbebr.factory.interfaces,

@@ -3,13 +3,13 @@ unit ormbr.dml.generator.nosql;
 interface
 
 uses
-  DB,
-  Rtti,
-  Classes,
-  SysUtils,
-  Variants,
-  StrUtils,
-  Generics.Collections,
+  Data.DB,
+  System.Rtti,
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+  System.StrUtils,
+  System.Generics.Collections,
   ormbr.dml.generator,
   ormbr.json,
   ormbr.dml.commands,

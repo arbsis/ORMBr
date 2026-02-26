@@ -3,8 +3,8 @@ unit ormbr.model.person;
 interface
 
 uses
-  Classes,
-  DB,
+  System.Classes,
+  Data.DB,
   /// orm
   ormbr.mapping.attributes,
   ormbr.types.mapping,

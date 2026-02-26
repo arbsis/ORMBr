@@ -12,9 +12,9 @@ unit Server.Resources;
 interface
 
 uses
-  Classes,
-  SysUtils,
-  Generics.Collections,
+  System.Classes,
+  System.SysUtils,
+  System.Generics.Collections,
   /// WiRL
   WiRL.Core.Engine,
   WiRL.Core.Application,
@@ -27,7 +27,7 @@ uses
   WiRL.http.Request,
   WiRL.http.Response,
   /// JSON
-  JSON,
+  System.JSON,
   /// ORMBr JSON
   ormbr.rest.json,
   ormbr.json.utils,
@@ -117,9 +117,9 @@ type
 implementation
 
 uses
-  DateUtils,
-  StrUtils,
-  IOUtils,
+  System.DateUtils,
+  System.StrUtils,
+  System.IOUtils,
   Server.Datamodule;
 
 { TMasterResource }

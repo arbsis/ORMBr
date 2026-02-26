@@ -3,10 +3,10 @@ unit orion.model.telefonecontato;
 interface
 
 uses
-  DB, 
-  Classes, 
-  SysUtils, 
-  Generics.Collections, 
+  Data.DB, 
+  System.Classes, 
+  System.SysUtils, 
+  System.Generics.Collections, 
 
   /// orm 
   ormbr.types.blob,

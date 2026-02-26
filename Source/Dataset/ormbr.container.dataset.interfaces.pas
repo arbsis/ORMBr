@@ -28,10 +28,10 @@ unit ormbr.container.dataset.interfaces;
 interface
 
 uses
-  DB,
-  RTTi,
-  Classes,
-  Generics.Collections,
+  Data.DB,
+  System.Rtti,
+  System.Classes,
+  System.Generics.Collections,
   ormbr.dataset.base.adapter;
 
 type

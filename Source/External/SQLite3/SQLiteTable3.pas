@@ -79,7 +79,7 @@ uses
   {$IFDEF WIN32}
   Winapi.Windows,
   {$ENDIF}
-  System.Classes, System.SysUtils, System.Generics.Collections, DB;
+  System.Classes, System.SysUtils, System.Generics.Collections, Data.DB;
   {$ELSE}
   {$IFDEF WIN32}
   Windows,
@@ -842,12 +842,12 @@ function SQLiteDataTypeToDelphiFieldType(SQLiteDataType: Integer): TFieldType;
 implementation
 
 uses
-  Variants,
-  Math,
+  System.Variants,
+  System.Math,
   {$IFDEF DELPHI14_UP}
-  Rtti,
+  System.Rtti,
   {$ENDIF}
-  TypInfo;
+  System.TypInfo;
 
 type
   { A custom variant type that implements the mapping from the property names

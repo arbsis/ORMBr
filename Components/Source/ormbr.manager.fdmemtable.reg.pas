@@ -30,7 +30,7 @@ unit ormbr.manager.fdmemtable.reg;
 interface
 
 uses
-  Classes,
+  System.Classes,
   DesignIntf,
   DesignEditors,
   ormbr.manager.fdmemtable;

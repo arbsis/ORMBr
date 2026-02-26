@@ -59,7 +59,7 @@ unit ormbr.criteria.ast;
 interface
 
 uses
-  Generics.Collections;
+  System.Generics.Collections;
 
 type
   IGpSQLCase = interface;
@@ -327,7 +327,7 @@ type
 implementation
 
 uses
-  {$IFNDEF FPC}SysUtils{$ELSE}Sysutils{$ENDIF};
+  {$IFNDEF FPC}System.SysUtils{$ELSE}{$ENDIF};
 
 type
   TGpSQLName = class(TInterfacedObject, IGpSQLName)

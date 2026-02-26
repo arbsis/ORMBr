@@ -35,12 +35,12 @@ unit ormbr.restdataset.fdmemtable;
 interface
 
 uses
-  DB,
-  Rtti,
-  Classes,
-  SysUtils,
-  Variants,
-  Generics.Collections,
+  Data.DB,
+  System.Rtti,
+  System.Classes,
+  System.SysUtils,
+  System.Variants,
+  System.Generics.Collections,
   FireDAC.Stan.Intf,
   FireDAC.Stan.Option,
   FireDAC.Stan.Param,

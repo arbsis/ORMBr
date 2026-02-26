@@ -30,8 +30,8 @@ unit ormbr.client.restexception;
 interface
 
 uses
-  Classes,
-  SysUtils;
+  System.Classes,
+  System.SysUtils;
 
 type
 

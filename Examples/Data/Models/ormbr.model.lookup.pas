@@ -3,10 +3,10 @@ unit ormbr.model.lookup;
 interface
 
 uses
-  Classes, 
-  DB, 
-  SysUtils, 
-  Generics.Collections, 
+  System.Classes, 
+  Data.DB, 
+  System.SysUtils, 
+  System.Generics.Collections, 
   /// orm 
   dbcbr.mapping.attributes,
   dbcbr.mapping.register,

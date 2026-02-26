@@ -29,8 +29,8 @@ unit ormbr.onetomany;
 interface
 
 uses
-  Classes,
-  Generics.Collections,
+  System.Classes,
+  System.Generics.Collections,
   Data.Bind.ObjectScope;
 
 type
@@ -107,7 +107,7 @@ type
 
 implementation
 
-uses Dialogs;
+uses Vcl.Dialogs;
 
 { TSyncMasterList<M> }
 

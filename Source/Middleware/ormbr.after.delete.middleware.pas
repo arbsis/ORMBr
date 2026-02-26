@@ -29,8 +29,8 @@ unit ormbr.after.delete.middleware;
 interface
 
 uses
-  SysUtils,
-  Generics.Collections,
+  System.SysUtils,
+  System.Generics.Collections,
   ormbr.register.middleware;
 
 type

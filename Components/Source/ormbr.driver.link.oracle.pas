@@ -3,7 +3,7 @@ unit ormbr.driver.link.oracle;
 interface
 
 uses
-  Classes;
+  System.Classes;
 
 type
   {$IF CompilerVersion > 23}

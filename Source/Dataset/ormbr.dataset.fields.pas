@@ -30,9 +30,9 @@ unit ormbr.dataset.fields;
 interface
 
 uses
-  DB,
-  Classes,
-  SysUtils;
+  Data.DB,
+  System.Classes,
+  System.SysUtils;
 
 const
   cInternalField = 'InternalField';

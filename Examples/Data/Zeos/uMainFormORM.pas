@@ -3,23 +3,23 @@ unit uMainFormORM;
 interface
 
 uses
-  Windows,
-  Messages,
-  SysUtils,
-  Variants,
-  Classes,
-  Graphics,
-  Controls,
-  Forms,
-  Dialogs,
-  DB,
-  Grids,
-  DBGrids,
-  StdCtrls,
-  Mask,
-  DBClient,
-  DBCtrls,
-  ExtCtrls,
+  Winapi.Windows,
+  Winapi.Messages,
+  System.SysUtils,
+  System.Variants,
+  System.Classes,
+  Vcl.Graphics,
+  Vcl.Controls,
+  Vcl.Forms,
+  Vcl.Dialogs,
+  Data.DB,
+  Vcl.Grids,
+  Vcl.DbGrids,
+  Vcl.StdCtrls,
+  Vcl.Mask,
+  Datasnap.DBClient,
+  Vcl.DBCtrls,
+  Vcl.ExtCtrls,
   MidasLib,
   /// orm factory
   dbebr.factory.interfaces,
@@ -93,7 +93,7 @@ implementation
 uses
   ormbr.form.monitor,
   ormbr.criteria,
-  TypInfo;
+  System.TypInfo;
 
 {$R *.dfm}
 

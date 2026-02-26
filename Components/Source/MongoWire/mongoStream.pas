@@ -16,7 +16,7 @@ unit mongoStream;
 
 interface
 
-uses Classes, mongoWire, jsonDoc;
+uses System.Classes, mongoWire, jsonDoc;
 
 type
   TMongoStream = class(TStream)
@@ -56,7 +56,7 @@ const
 
 implementation
 
-uses SysUtils, Variants, mongoID;
+uses System.SysUtils, System.Variants, mongoID;
 
 const
   //do not localize

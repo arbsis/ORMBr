@@ -11,7 +11,7 @@ uses
   FireDAC.DApt.Intf, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
   FireDAC.Comp.Client, Vcl.Grids, Vcl.DBGrids, Vcl.StdCtrls,
 
-  Generics.Collections,
+  System.Generics.Collections,
 
   /// orm interface de conexão
   dbebr.factory.interfaces,

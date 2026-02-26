@@ -45,7 +45,7 @@ Define here or in the project settings
 
 interface
 
-uses SysUtils;
+uses System.SysUtils;
 
 const
   //COM GUID's
@@ -437,7 +437,7 @@ type
 
 implementation
 
-uses Variants, Windows;
+uses System.Variants, Winapi.Windows;
 
 procedure VarMove(var Dest, Src: Variant);
 begin

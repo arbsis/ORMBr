@@ -29,10 +29,10 @@ unit ormbr.command.factory;
 interface
 
 uses
-  DB,
-  Rtti,
-  SysUtils,
-  Generics.Collections,
+  Data.DB,
+  System.Rtti,
+  System.SysUtils,
+  System.Generics.Collections,
   ormbr.command.selecter,
   ormbr.command.inserter,
   ormbr.command.deleter,

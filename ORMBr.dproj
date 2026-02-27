@@ -65,7 +65,7 @@
         <DCC_CBuilderOutput>All</DCC_CBuilderOutput>
         <SanitizedProjectName>ORMBr</SanitizedProjectName>
         <RuntimeOnlyPackage>true</RuntimeOnlyPackage>
-        <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;modules;modules\cqlbr\Source\Core;modules\cqlbr\Source\Drivers;modules\cqlbr\Source;modules\dbcbr\Source\Core;modules\dbcbr\Source\Drivers;modules\dbcbr\Source;modules\dbebr\Source\Core;modules\dbebr\Source\Drivers;modules\dbebr\Source;modules\jsonbr\Source\Core;modules\jsonbr\Source\Middleware-Horse;modules\jsonbr\Source\Reader;modules\jsonbr\Source\Writer;modules\jsonbr\Source;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>$(DCC_UnitSearchPath);modules\.dcp;modules\.dcu;modules;modules\cqlbr\Source\Core;modules\cqlbr\Source\Drivers;modules\cqlbr\Source;modules\dbcbr\Source\Core;modules\dbcbr\Source\Drivers;modules\dbcbr\Source;modules\dbebr\Source\Core;modules\dbebr\Source\Drivers;modules\dbebr\Source;modules\jsonbr\Source\Core;modules\jsonbr\Source\Middleware-Horse;modules\jsonbr\Source\Reader;modules\jsonbr\Source\Writer;modules\jsonbr\Source</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_CBuilderOutput>None</DCC_CBuilderOutput>
@@ -111,8 +111,6 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="rtl.dcp"/>
-        <DCCReference Include="CQLBr.dcp"/>
-        <DCCReference Include="DBCBr.dcp"/>
         <DCCReference Include="DBEBr.dcp"/>
         <DCCReference Include="vcl.dcp"/>
         <DCCReference Include="inet.dcp"/>
@@ -130,6 +128,8 @@
         <DCCReference Include="bindcomp.dcp"/>
         <DCCReference Include="dsnap.dcp"/>
         <DCCReference Include="DataSnapServer.dcp"/>
+        <DCCReference Include="CQLBr.dcp"/>
+        <DCCReference Include="DBCBr.dcp"/>
         <DCCReference Include="Source\Core\ormbr.bind.pas"/>
         <DCCReference Include="Source\Core\ormbr.command.abstract.pas"/>
         <DCCReference Include="Source\Core\ormbr.command.deleter.pas"/>
@@ -1139,6 +1139,7 @@
             <Platforms>
                 <Platform value="Android">False</Platform>
                 <Platform value="Android64">False</Platform>
+                <Platform value="Linux64">False</Platform>
                 <Platform value="Win32">True</Platform>
                 <Platform value="Win64">False</Platform>
                 <Platform value="Win64x">False</Platform>

@@ -30,8 +30,6 @@
 
 requires
   rtl,
-  CQLBr,
-  DBCBr,
   DBEBr,
   vcl,
   inet,
@@ -48,7 +46,9 @@ requires
   RESTComponents,
   bindcomp,
   dsnap,
-  DataSnapServer;
+  DataSnapServer,
+  CQLBr{BOSS},
+  DBCBr{BOSS};
 
 contains
   ormbr.bind in 'Source\Core\ormbr.bind.pas',

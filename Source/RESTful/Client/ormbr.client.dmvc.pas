@@ -27,15 +27,11 @@ uses
   ormbr.client,
   ormbr.client.base,
   ormbr.client.methods,
-  ormbr.client.restexception,
-
-  MVCFramework.RESTClient;
+  ormbr.client.restexception;
 
 type
   TRESTClientDelphiMVC = class(TORMBrClient)
   private
-    FRESTClient: TRESTClient;
-    FRESTResponse: IRESTResponse;
     procedure SetProxyParamsClientValues;
     procedure SetAuthenticatorTypeValues;
     procedure SetParamsBodyValue;
@@ -67,24 +63,18 @@ type
 
 implementation
 
-uses
-  ormbr.client.restdmvc.factory;
-
 { TRESTClientDelphiMVC }
 
 constructor TRESTClientDelphiMVC.Create(AOwner: TComponent);
 begin
   inherited;
-  FRESTFactory := TRESTFactoryDMVC.Create(Self);
   // Monta a URL base
   SetBaseURL;
 end;
 
 destructor TRESTClientDelphiMVC.Destroy;
 begin
-  if Assigned(FRESTClient) then
-    FRESTClient.Free;
-  inherited;
+  
 end;
 
 procedure TRESTClientDelphiMVC.DoAfterCommand;

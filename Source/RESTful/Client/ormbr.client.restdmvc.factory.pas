@@ -22,7 +22,6 @@ uses
   System.Classes,
   System.SysUtils,
   ormbr.restfactory.connection,
-  ormbr.client.restdriver.dmvc,
   ormbr.client.methods;
 
 type

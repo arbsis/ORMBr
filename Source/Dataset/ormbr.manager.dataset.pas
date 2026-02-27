@@ -38,9 +38,9 @@ uses
   {$IFDEF USEFDMEMTABLE}
     FireDAC.Comp.Client,
     {$IFDEF DRIVERRESTFUL}
-      ormbr.restdataset.fdmemtable
+      ormbr.restdataset.fdmemtable,
     {$ELSE}
-      , ormbr.dataset.fdmemtable
+      ormbr.dataset.fdmemtable
     {$ENDIF},
   {$ENDIF}
 
@@ -55,9 +55,9 @@ uses
 
   // ORMBr Interface
   {$IFDEF DRIVERRESTFUL}
-    ormbr.restfactory.interfaces
+    ormbr.restfactory.interfaces,
   {$ELSE}
-    , dbebr.factory.interfaces
+    dbebr.factory.interfaces
   {$ENDIF},
   ormbr.dataset.base.adapter;
 

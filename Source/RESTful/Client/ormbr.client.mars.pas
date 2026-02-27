@@ -27,16 +27,7 @@ uses
   ormbr.client,
   ormbr.client.base,
   ormbr.client.methods,
-  ormbr.client.restexception,
-
-  MARS.Client.CustomResource,
-  MARS.Client.Resource,
-  MARS.Client.Resource.JSON,
-  MARS.Client.Application,
-  MARS.Client.Client,
-  MARS.Client.Client.Indy,
-  MARS.Core.Utils,
-  MARS.Client.Token;
+  ormbr.client.restexception;
 
 type
   TRESTClientMARS = class(TORMBrClient)

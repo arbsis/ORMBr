@@ -21,11 +21,11 @@ interface
 uses
   System.Classes,
   System.SysUtils,
-  ormbr.restcomponent,
+  ormbr.restcomponent;
   /// ORMBr Conexão
-  ormbr.factory.interfaces,
+ // ormbr.factory.interfaces,
   /// WiRL
-  MVCFramework;
+//  MVCFramework;
 
 type
   TRESTServerDMVC = class(TORMBrComponent)

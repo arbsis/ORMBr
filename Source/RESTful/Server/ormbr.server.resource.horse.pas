@@ -21,7 +21,7 @@ interface
 uses
   System.SysUtils,
   // Horse
-  Horse,
+//  Horse,
   // ORMBr
   ormbr.server.restquery.parse,
   ormbr.server.resource;

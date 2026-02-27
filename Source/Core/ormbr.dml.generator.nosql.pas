@@ -226,19 +226,21 @@ begin
   LCriteria := TStringBuilder.Create;
   try
     LCriteria
-      .Append('command=find& ')
+      .Append('command=find&')
         .Append('collection=' + LTable.Name);
     // PrimaryKey
-    if VarToStr(AID) <> '-1' then
+    //if VarToStr(AID) <> '-1' then
+    if not AID.IsEmpty and not AID.AsString.Equals('-1') then
     begin
       LPrimaryKey := TMappingExplorer.GetMappingPrimaryKey(AClass);
       if LPrimaryKey <> nil then
       begin
         LCriteria.Append('& filter={');
-        if TVarData(AID).VType = varInteger then
-          LCriteria.Append('"' + LPrimaryKey.Columns[0] + '":' + IntToStr(AID))
+        //if TVarData(AID).VType = varInteger then
+        if AID.IsType<Integer> then
+          LCriteria.Append('"' + LPrimaryKey.Columns[0] + '":' + AID.ToString) //+ IntToStr(AID))
         else
-          LCriteria.Append('"' + LPrimaryKey.Columns[0] + '":"' + IntToStr(AID) + '"');
+          LCriteria.Append('"' + LPrimaryKey.Columns[0] + '":"' + AID.ToString + '"'); //+ IntToStr(AID) + '"');
         LCriteria.Append('}');
       end;
     end;

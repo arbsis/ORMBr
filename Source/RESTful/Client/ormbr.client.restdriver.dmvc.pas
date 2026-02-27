@@ -22,8 +22,7 @@ uses
   System.Classes,
   System.SysUtils,
   ormbr.client.dmvc,
-  ormbr.client.methods,
-  ormbr.driver.rest;
+  ormbr.client.methods;
 
 type
   /// <summary>

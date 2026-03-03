@@ -19,10 +19,11 @@ unit ormbr.client.restdriver.dmvc;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
+  Classes,
+  SysUtils,
   ormbr.client.dmvc,
-  ormbr.client.methods;
+  ormbr.client.methods,
+  ormbr.driver.rest;
 
 type
   /// <summary>

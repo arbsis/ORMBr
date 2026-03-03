@@ -16,7 +16,7 @@ unit mongoWire;
 
 interface
 
-uses System.SysUtils, System.SyncObjs, System.Classes, simpleSock, jsonDoc, bsonTools;
+uses SysUtils, SyncObjs, Classes, simpleSock, jsonDoc, bsonTools;
 
 type
   TMongoWire=class(TObject)
@@ -139,7 +139,7 @@ const
 
 implementation
 
-uses Winapi.ActiveX, System.Variants, Winapi.WinSock;
+uses ActiveX, Variants, WinSock;
 
 const
   OP_REPLY        = 1;

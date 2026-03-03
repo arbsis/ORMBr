@@ -19,19 +19,23 @@ unit ormbr.client.dmvc;
 interface
 
 uses
-  Data.DB,
-  System.SysUtils,
-  System.StrUtils,
-  System.Classes,
-  System.Generics.Collections,
+  DB,
+  SysUtils,
+  StrUtils,
+  Classes,
+  Generics.Collections,
   ormbr.client,
   ormbr.client.base,
   ormbr.client.methods,
-  ormbr.client.restexception;
+  ormbr.client.restexception,
+
+  MVCFramework.RESTClient;
 
 type
   TRESTClientDelphiMVC = class(TORMBrClient)
   private
+    FRESTClient: TRESTClient;
+    FRESTResponse: IRESTResponse;
     procedure SetProxyParamsClientValues;
     procedure SetAuthenticatorTypeValues;
     procedure SetParamsBodyValue;
@@ -63,18 +67,24 @@ type
 
 implementation
 
+uses
+  ormbr.client.restdmvc.factory;
+
 { TRESTClientDelphiMVC }
 
 constructor TRESTClientDelphiMVC.Create(AOwner: TComponent);
 begin
   inherited;
+  FRESTFactory := TRESTFactoryDMVC.Create(Self);
   // Monta a URL base
   SetBaseURL;
 end;
 
 destructor TRESTClientDelphiMVC.Destroy;
 begin
-  
+  if Assigned(FRESTClient) then
+    FRESTClient.Free;
+  inherited;
 end;
 
 procedure TRESTClientDelphiMVC.DoAfterCommand;

@@ -31,8 +31,8 @@ unit ormbr.register.middleware;
 interface
 
 uses
-  System.SysUtils,
-  System.Generics.Collections;
+  SysUtils,
+  Generics.Collections;
 
 type
   TORMBrEventType = (onBeforeInsert, onAfeterInsert,

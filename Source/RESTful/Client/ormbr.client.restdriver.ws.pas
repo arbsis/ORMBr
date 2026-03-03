@@ -19,8 +19,8 @@ unit ormbr.client.restdriver.ws;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
+  Classes,
+  SysUtils,
   ormbr.client.ws,
   ormbr.client.restdriver,
   ormbr.client.methods;

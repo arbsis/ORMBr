@@ -18,7 +18,7 @@ unit bsonTools;
 interface
 
 uses
-  System.Win.ComObj, System.SysUtils, System.Classes, jsonDoc;
+  ComObj, SysUtils, Classes, jsonDoc;
 
 const
   //special prefix with unassigned(?) unicode symbols from the Special range
@@ -81,11 +81,11 @@ type
 implementation
 
 uses
-  Winapi.Windows, Winapi.ActiveX,
+  Windows, ActiveX,
   {$IFDEF BSON_SUPPORT_REGEX}
   VBScript_RegExp_55_TLB,
   {$ENDIF}
-  System.Variants;
+  Variants;
 
 const
   BSONArrayBaseIndex=0;//1?

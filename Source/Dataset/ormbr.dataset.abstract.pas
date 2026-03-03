@@ -30,9 +30,9 @@ unit ormbr.dataset.abstract;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  Generics.Collections,
   ormbr.dataset.fields,
   ormbr.session.abstract,
   dbcbr.mapping.classes,

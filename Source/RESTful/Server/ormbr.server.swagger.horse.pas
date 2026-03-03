@@ -3,7 +3,7 @@ unit ormbr.server.swagger.horse;
 interface
 
 uses
-  System.SysUtils,
+  SysUtils,
   GBSwagger.Model.Interfaces,
   GBSwagger.Model.Attributes,
   ormbr.server.resource.horse,

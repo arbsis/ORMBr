@@ -2,7 +2,7 @@ unit simpleSock;
 
 interface
 
-uses System.SysUtils, System.Classes;
+uses SysUtils, Classes;
 
 {$D-}
 {$L-}

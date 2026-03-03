@@ -8,9 +8,9 @@
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
-  System.Generics.Collections,
+  Classes,
+  SysUtils,
+  Generics.Collections,
   /// MARS
   MARS.Core.Exceptions,
   MARS.Core.Registry,
@@ -21,7 +21,7 @@ uses
   MARS.Core.MessageBodyReaders,
   MARS.Core.URL,
   /// JSON
-  System.JSON,
+  JSON,
   /// ORMBr JSON
   ormbr.rest.json,
   ormbr.json.utils,
@@ -108,9 +108,9 @@ type
 implementation
 
 uses
-  System.DateUtils,
-  System.StrUtils,
-  System.IOUtils,
+  DateUtils,
+  StrUtils,
+  IOUtils,
   Server.Data.Main;
 
 { TMasterResource }

@@ -3,10 +3,10 @@ unit Model.Setor;
 interface
 
 uses
-  Data.DB,
-  System.Classes,
-  System.SysUtils,
-  System.Generics.Collections,
+  DB,
+  Classes,
+  SysUtils,
+  Generics.Collections,
   /// orm
   ormbr.types.blob,
   ormbr.types.lazy,

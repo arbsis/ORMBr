@@ -3,8 +3,8 @@ unit ormbr.container.objectset;
 interface
 
 uses
-  System.Rtti,
-  System.Generics.Collections,
+  Rtti,
+  Generics.Collections,
   /// ormbr
   ormbr.container.objectset.interfaces,
   dbebr.factory.interfaces,

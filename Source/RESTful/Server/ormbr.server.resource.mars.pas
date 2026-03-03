@@ -19,13 +19,13 @@ unit ormbr.server.resource.mars;
 interface
 
 uses
-  System.SysUtils,
+  SysUtils,
   // MARS
   MARS.Core.Registry,
   MARS.Core.Attributes,
   MARS.Core.MediaType,
   // JSON
-  System.JSON,
+  JSON,
   // ORMBr
   ormbr.server.restquery.parse,
   ormbr.server.resource;

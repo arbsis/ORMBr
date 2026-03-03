@@ -31,22 +31,22 @@ unit ormbr.types.blob;
 interface
 
 uses
-  Data.DB,
-  System.Classes,
-  System.SysUtils,
+  DB,
+  Classes,
+  SysUtils,
   {$IFDEF HAS_FMX}
     FMX.Graphics,
   {$ENDIF}
   {$IFDEF HAS_VCL}
     // Delphi > 2010+ adicionar em:
     // Option->Delphi Compiler->Unit scope names, "Vcl", "Vcl.Imaging"
-    Vcl.Graphics,
-    Vcl.Imaging.GIFImg,
-    Vcl.Imaging.jpeg,
-    Vcl.Imaging.pngimage,
-    Vcl.Imaging.pnglang,
+    Graphics,
+    GIFImg,
+    JPEG,
+    PngImage,
+    pnglang,
     {$IF COMPILERVERSION > 23}
-      System.AnsiStrings,
+      AnsiStrings,
     {$IFEND}
   {$ENDIF}
   // CodeBase64 e DecodeBase64
@@ -55,9 +55,9 @@ uses
   {$ELSE IFDEF HAS_SOAP_ENCODING}
     Soap.EncdDecd,
   {$ELSE}
-    Soap.EncdDecd,
+    encddecd,
   {$IFEND}
-  System.ZLib;
+  ZLib;
 
 type
   TBlob = record

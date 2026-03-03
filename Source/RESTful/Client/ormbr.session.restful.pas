@@ -32,18 +32,18 @@ unit ormbr.session.restful;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.TypInfo,
-  System.Classes,
-  System.Variants,
-  System.SysUtils,
-  System.StrUtils,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  TypInfo,
+  Classes,
+  Variants,
+  SysUtils,
+  StrUtils,
+  Generics.Collections,
   {$IFDEF DELPHI15_UP}
-  System.JSON,
+  JSON,
   {$ELSE}
-  Data.DBXJSON,
+  DBXJSON,
   {$ENDIF}
   // ORMBr
   ormbr.session.abstract,

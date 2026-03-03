@@ -20,7 +20,7 @@ unit mongoAuth;
 
 interface
 
-uses System.SysUtils, mongoWire;
+uses SysUtils, mongoWire;
 
 function MD5Hash(x:UTF8String):UTF8String;
 

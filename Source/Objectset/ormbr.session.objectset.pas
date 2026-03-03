@@ -30,13 +30,13 @@ unit ormbr.session.objectset;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.TypInfo,
-  System.Classes,
-  System.Variants,
-  System.SysUtils,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  TypInfo,
+  Classes,
+  Variants,
+  SysUtils,
+  Generics.Collections,
   /// ORMBr
   ormbr.bind,
   ormbr.command.executor,

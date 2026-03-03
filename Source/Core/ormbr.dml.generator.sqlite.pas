@@ -26,11 +26,11 @@ unit ormbr.dml.generator.sqlite;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
-  System.StrUtils,
-  System.Variants,
-  System.Rtti,
+  Classes,
+  SysUtils,
+  StrUtils,
+  Variants,
+  Rtti,
   ormbr.dml.generator,
   ormbr.driver.register,
   ormbr.dml.commands,

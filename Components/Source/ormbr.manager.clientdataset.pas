@@ -30,10 +30,10 @@ unit ormbr.manager.clientdataset;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.Classes,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  Classes,
+  Generics.Collections,
   dbebr.connection.base,
   ormbr.db.manager.clientdataset;
 

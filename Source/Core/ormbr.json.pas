@@ -30,18 +30,18 @@ unit ormbr.json;
 interface
 
 uses
-  System.Rtti,
-  Data.DB,
-  System.SysUtils,
-  System.StrUtils,
-  System.Classes,
-  System.Variants,
-  System.TypInfo,
-  System.Generics.Collections,
+  Rtti,
+  DB,
+  SysUtils,
+  StrUtils,
+  Classes,
+  Variants,
+  TypInfo,
+  Generics.Collections,
   {$IFDEF DELPHI15_UP}
-  System.JSON,
+  JSON,
   {$ELSE}
-  Data.DBXJSON,
+  DBXJSON,
   {$ENDIF}
   // ormbr
   dbcbr.mapping.attributes,

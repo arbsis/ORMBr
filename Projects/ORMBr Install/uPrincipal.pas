@@ -5,11 +5,11 @@ interface
 uses
   JclIDEUtils, JclCompilerUtils,
 
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, Vcl.Controls, Vcl.Forms,
-  Vcl.Dialogs, Vcl.ComCtrls, Vcl.StdCtrls, Vcl.ExtCtrls, Vcl.Buttons, Vcl.Imaging.pngimage, Winapi.ShlObj,
-  uFrameLista, System.IOUtils, System.TypInfo,
-  System.Types, JvComponentBase, JvCreateProcess, JvExControls, JvAnimatedImage,
-  JvGIFCtrl, JvWizard, JvWizardRouteMapNodes, Vcl.CheckLst;
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, ComCtrls, StdCtrls, ExtCtrls, Buttons, pngimage, ShlObj,
+  uFrameLista, IOUtils, TypInfo,
+  Types, JvComponentBase, JvCreateProcess, JvExControls, JvAnimatedImage,
+  JvGIFCtrl, JvWizard, JvWizardRouteMapNodes, CheckLst;
 
 type
   TDestino = (tdSystem, tdDelphi, tdNone);
@@ -149,7 +149,7 @@ var
 implementation
 
 uses
-  SVN_Class, Vcl.FileCtrl, Winapi.ShellAPI, System.IniFiles, System.StrUtils, System.Math, System.Win.Registry;
+  SVN_Class, FileCtrl, ShellApi, IniFiles, StrUtils, Math, Registry;
 
 {$R *.dfm}
 

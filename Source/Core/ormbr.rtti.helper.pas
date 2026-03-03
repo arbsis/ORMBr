@@ -31,13 +31,13 @@ unit ormbr.rtti.helper;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.Variants,
-  System.Classes,
-  System.SysUtils,
-  System.StrUtils,
-  System.TypInfo,
+  DB,
+  Rtti,
+  Variants,
+  Classes,
+  SysUtils,
+  StrUtils,
+  TypInfo,
   jsonbr.utils,
   dbcbr.rtti.helper,
   ormbr.types.nullable;

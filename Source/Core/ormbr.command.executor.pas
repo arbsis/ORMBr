@@ -30,12 +30,12 @@ unit ormbr.command.executor;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.Classes,
-  System.SysUtils,
-  System.Variants,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  Classes,
+  SysUtils,
+  Variants,
+  Generics.Collections,
   /// ormbr
   ormbr.command.factory,
   ormbr.command.executor.abstract,

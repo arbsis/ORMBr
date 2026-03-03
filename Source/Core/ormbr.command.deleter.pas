@@ -29,10 +29,10 @@ unit ormbr.command.deleter;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.SysUtils,
-  System.Types,
+  DB,
+  Rtti,
+  SysUtils,
+  Types,
   ormbr.command.abstract,
   dbebr.factory.interfaces,
   dbcbr.mapping.popular,

@@ -29,8 +29,8 @@ unit ormbr.command.abstract;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
+  DB,
+  Rtti,
   dbebr.factory.interfaces,
   ormbr.driver.register,
   ormbr.dml.interfaces;

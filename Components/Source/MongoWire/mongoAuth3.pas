@@ -25,7 +25,7 @@ type
 
 implementation
 
-uses System.SysUtils, jsonDoc, System.Variants;
+uses SysUtils, jsonDoc, Variants;
 
 {$IF not Declared(RawByteString)}
 type

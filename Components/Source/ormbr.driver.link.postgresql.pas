@@ -3,7 +3,7 @@ unit ormbr.driver.link.postgresql;
 interface
 
 uses
-  System.Classes;
+  Classes;
 
 type
   {$IF CompilerVersion > 23}

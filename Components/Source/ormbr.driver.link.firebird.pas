@@ -3,7 +3,7 @@ unit ormbr.driver.link.firebird;
 interface
 
 uses
-  System.Classes;
+  Classes;
 
 type
   {$IF CompilerVersion > 23}

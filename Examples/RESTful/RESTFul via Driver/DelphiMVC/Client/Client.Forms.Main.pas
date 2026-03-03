@@ -3,23 +3,23 @@ unit Client.Forms.Main;
 interface
 
 uses
-  Winapi.Windows,
-  Winapi.Messages,
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  Data.DB,
-  Vcl.Grids,
-  Vcl.DbGrids,
-  Vcl.StdCtrls,
-  Vcl.Mask,
-  Datasnap.DBClient,
-  Vcl.DBCtrls,
-  Vcl.ExtCtrls,
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  DB,
+  Grids,
+  DBGrids,
+  StdCtrls,
+  Mask,
+  DBClient,
+  DBCtrls,
+  ExtCtrls,
   /// ORMBr Modelos
   ormbr.model.master,
   ormbr.model.detail,
@@ -85,8 +85,8 @@ var
 implementation
 
 uses
-  System.StrUtils,
-  System.Generics.Collections,
+  StrUtils,
+  Generics.Collections,
   ormbr.form.monitor,
   ormbr.rest.json;
 

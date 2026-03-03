@@ -3,8 +3,8 @@ unit repository.master;
 interface
 
 uses
-  Data.DB,
-  System.SysUtils,
+  DB,
+  SysUtils,
   provider.ormbr,
   provider.datamodule,
   // ORMBr Modelos

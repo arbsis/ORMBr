@@ -19,15 +19,15 @@ unit ormbr.server.horse;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
-  System.StrUtils,
+  Classes,
+  SysUtils,
+  StrUtils,
   ormbr.restcomponent,
   // DBEBr Conexão
-  dbebr.factory.interfaces;
+  dbebr.factory.interfaces,
   // HorseCore
-//  Horse,
-//  Horse.Core;
+  Horse,
+  Horse.Core;
 
 type
   TRESTServerHorse = class(TORMBrComponent)
@@ -49,6 +49,9 @@ type
   end;
 
 implementation
+
+uses
+  ormbr.server.resource.horse;
 
 { TRESTServerHorse }
 

@@ -3,10 +3,10 @@ unit orion.model.empresa;
 interface
 
 uses
-  Data.DB, 
-  System.Classes, 
-  System.SysUtils, 
-  System.Generics.Collections, 
+  DB, 
+  Classes, 
+  SysUtils, 
+  Generics.Collections, 
 
   /// orm 
   orion.model.cidade,

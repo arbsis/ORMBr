@@ -26,15 +26,15 @@ unit ormbr.livebindings;
 interface
 
 uses
-  System.Rtti,
-  System.Classes,
-  System.SysUtils,
-  Vcl.Controls,
-  System.TypInfo,
+  RTTI,
+  Classes,
+  SysUtils,
+  Controls,
+  TypInfo,
   Bindings.Expression,
   Bindings.Helper,
   Data.Bind.ObjectScope,
-  System.Generics.Collections,
+  Generics.Collections,
   ormbr.controls.helpers;
 
 type

@@ -29,8 +29,8 @@ unit ormbr.command.executor.abstract;
 interface
 
 uses
-  System.Rtti,
-  System.Generics.Collections,
+  Rtti,
+  Generics.Collections,
   // ORMBr
   dbebr.factory.interfaces,
   dbcbr.mapping.popular,

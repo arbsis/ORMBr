@@ -3,8 +3,8 @@ unit provider.ormbr;
 interface
 
 uses
-  Data.DB,
-  System.SysUtils,
+  DB,
+  SysUtils,
   provider.datamodule,
   // ORMBr Manager
   ormbr.manager.dataset,

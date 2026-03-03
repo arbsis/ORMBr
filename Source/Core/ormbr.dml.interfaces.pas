@@ -28,9 +28,9 @@ unit ormbr.dml.interfaces;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  Generics.Collections,
   /// ormbr
   ormbr.dml.commands,
   dbebr.factory.interfaces,

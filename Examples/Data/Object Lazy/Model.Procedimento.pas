@@ -3,10 +3,10 @@ unit Model.Procedimento;
 interface
 
 uses
-  Data.DB,
-  System.Classes,
-  System.SysUtils,
-  System.Generics.Collections,
+  DB,
+  Classes,
+  SysUtils,
+  Generics.Collections,
   /// Units Associadas
   Model.Setor,
   /// orm              

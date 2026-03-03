@@ -3,11 +3,11 @@ unit Server.Data.Main;
 interface
 
 uses
-  System.SysUtils,
-  System.Classes,
-  Vcl.Forms,
+  SysUtils,
+  Classes,
+  Forms,
   Web.HTTPApp,
-  System.IOUtils,
+  IOUtils,
   MVCFramework,
   MVCFramework.Commons,
 

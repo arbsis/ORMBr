@@ -28,9 +28,9 @@ unit ormbr.types.lazy;
 interface
 
 uses
-  System.Rtti,
-  System.SysUtils,
-  System.TypInfo;
+  Rtti,
+  SysUtils,
+  TypInfo;
 
 const
   ObjCastGUID: TGUID = '{2B0E75F4-EB17-4995-B4DB-FE6D40F1189F}';

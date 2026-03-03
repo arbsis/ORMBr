@@ -20,13 +20,13 @@ unit ormbr.server.restquery.parse;
 interface
 
 uses
-  System.Rtti,
-  System.Classes,
-  System.SysUtils,
-  System.StrUtils,
-  System.Variants,
-  System.Types,
-  System.Generics.Collections;
+  Rtti,
+  Classes,
+  SysUtils,
+  StrUtils,
+  Variants,
+  Types,
+  Generics.Collections;
 
 type
   // Querying Data

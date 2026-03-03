@@ -21,18 +21,18 @@ unit ormbr.client.ws;
 interface
 
 uses
-  Data.DB,
-  System.SysUtils,
-  System.StrUtils,
-  System.Classes,
+  DB,
+  SysUtils,
+  StrUtils,
+  Classes,
   ormbr.client,
   ormbr.client.base,
   ormbr.client.methods,
   ormbr.client.restexception,
   {$IFDEF DELPHI15_UP}
-  System.JSON,
+  JSON,
   {$ELSE}
-  Data.DBXJSON,
+  DBXJSON,
   {$ENDIF}
   REST.Client,
   REST.Types,

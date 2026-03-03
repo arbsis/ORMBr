@@ -28,11 +28,11 @@ unit ormbr.dml.generator.mysql;
 interface
 
 uses
-  System.Rtti,
-  System.Classes,
-  System.SysUtils,
-  System.StrUtils,
-  System.Variants,
+  Rtti,
+  Classes,
+  SysUtils,
+  StrUtils,
+  Variants,
   ormbr.dml.generator,
   ormbr.dml.cache,
   ormbr.driver.register,

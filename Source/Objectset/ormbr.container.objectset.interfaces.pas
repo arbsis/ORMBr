@@ -28,8 +28,8 @@ unit ormbr.container.objectset.interfaces;
 interface
 
 uses
-  System.Rtti,
-  System.Generics.Collections;
+  Rtti,
+  Generics.Collections;
 
 type
   IContainerObjectSet<M: class, constructor> = interface

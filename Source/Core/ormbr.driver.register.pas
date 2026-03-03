@@ -29,8 +29,8 @@ unit ormbr.driver.register;
 interface
 
 uses
-  System.SysUtils,
-  System.Generics.Collections,
+  SysUtils,
+  Generics.Collections,
   ormbr.dml.interfaces,
   dbebr.factory.interfaces;
 

@@ -3,9 +3,9 @@ unit ormbr.dml.generator.mongodb;
 interface
 
 uses
-  Data.DB,
-  System.Classes,
-  System.Generics.Collections,
+  DB,
+  Classes,
+  Generics.Collections,
   ormbr.dml.generator.nosql,
   dbcbr.mapping.classes,
   dbebr.factory.interfaces,

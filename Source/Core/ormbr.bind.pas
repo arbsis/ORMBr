@@ -28,14 +28,14 @@ unit ormbr.bind;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.Classes,
-  System.SysUtils,
-  System.TypInfo,
-  System.Variants,
-  System.Types,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  Classes,
+  SysUtils,
+  TypInfo,
+  Variants,
+  Types,
+  Generics.Collections,
   /// orm
   ormbr.objects.utils,
   ormbr.objects.helper,

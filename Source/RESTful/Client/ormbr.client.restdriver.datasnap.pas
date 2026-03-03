@@ -19,8 +19,8 @@ unit ormbr.client.restdriver.datasnap;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
+  Classes,
+  SysUtils,
   ormbr.client.datasnap,
   ormbr.client.restdriver,
   ormbr.client.methods;

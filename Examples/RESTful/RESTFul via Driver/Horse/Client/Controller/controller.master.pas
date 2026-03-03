@@ -3,8 +3,8 @@ unit controller.master;
 interface
 
 uses
-  Data.DB,
-  System.SysUtils,
+  DB,
+  SysUtils,
   repository.master,
   provider.datamodule,
   ormbr.client.methods;

@@ -28,11 +28,11 @@ unit ormbr.dml.generator.ads;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
-  System.StrUtils,
-  System.Variants,
-  System.Rtti,
+  Classes,
+  SysUtils,
+  StrUtils,
+  Variants,
+  Rtti,
   ormbr.dml.generator,
   dbcbr.mapping.classes,
   dbcbr.mapping.explorer,

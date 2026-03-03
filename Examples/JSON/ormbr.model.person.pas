@@ -3,9 +3,9 @@ unit ormbr.model.person;
 interface
 
 uses
-  System.Classes,
-  Data.DB,
-  System.Generics.Collections,
+  Classes,
+  DB,
+  Generics.Collections,
   /// orm
   dbcbr.mapping.attributes,
   dbcbr.types.mapping,

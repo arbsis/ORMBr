@@ -30,16 +30,16 @@ unit ormbr.objects.utils;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
-  System.Rtti,
-  Data.DB,
-  System.TypInfo,
-  System.Math,
-  System.StrUtils,
-  System.Types,
-  System.Variants,
-  System.Generics.Collections,
+  Classes,
+  SysUtils,
+  Rtti,
+  DB,
+  TypInfo,
+  Math,
+  StrUtils,
+  Types,
+  Variants,
+  Generics.Collections,
   /// orm
   dbcbr.mapping.popular,
   dbcbr.mapping.attributes,

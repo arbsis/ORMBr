@@ -30,8 +30,8 @@ unit ormbr.client.base;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
+  Classes,
+  SysUtils,
   ormbr.restcomponent,
   ormbr.client.consts,
   ormbr.restfactory.interfaces;

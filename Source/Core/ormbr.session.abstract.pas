@@ -31,11 +31,11 @@ unit ormbr.session.abstract;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.TypInfo,
-  System.SysUtils,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  TypInfo,
+  SysUtils,
+  Generics.Collections,
   /// ORMBr
   ormbr.bind,
   ormbr.core.consts,

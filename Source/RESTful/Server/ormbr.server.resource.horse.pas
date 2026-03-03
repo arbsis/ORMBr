@@ -19,9 +19,9 @@ unit ormbr.server.resource.horse;
 interface
 
 uses
-  System.SysUtils,
+  SysUtils,
   // Horse
-//  Horse,
+  Horse,
   // ORMBr
   ormbr.server.restquery.parse,
   ormbr.server.resource;

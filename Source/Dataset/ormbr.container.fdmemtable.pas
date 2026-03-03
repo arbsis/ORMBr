@@ -30,8 +30,8 @@ unit ormbr.container.fdmemtable;
 interface
 
 uses
-  Data.DB,
-  System.SysUtils,
+  DB,
+  SysUtils,
   FireDAC.Comp.Client,
   /// ormbr
   ormbr.session.dataset,

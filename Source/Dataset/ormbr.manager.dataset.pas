@@ -31,31 +31,31 @@ unit ormbr.manager.dataset;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.SysUtils,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  SysUtils,
+  Generics.Collections,
   {$IFDEF USEFDMEMTABLE}
     FireDAC.Comp.Client,
     {$IFDEF DRIVERRESTFUL}
-      ormbr.restdataset.fdmemtable,
+      ormbr.restdataset.fdmemtable
     {$ELSE}
       ormbr.dataset.fdmemtable
     {$ENDIF},
   {$ENDIF}
 
   {$IFDEF USECLIENTDATASET}
-    Datasnap.DBClient,
+    DBClient,
     {$IFDEF DRIVERRESTFUL}
       ormbr.restdataset.clientdataset
     {$ELSE}
-      , ormbr.dataset.clientdataset
+      ormbr.dataset.clientdataset
     {$ENDIF},
   {$ENDIF}
 
   // ORMBr Interface
   {$IFDEF DRIVERRESTFUL}
-    ormbr.restfactory.interfaces,
+    ormbr.restfactory.interfaces
   {$ELSE}
     dbebr.factory.interfaces
   {$ENDIF},

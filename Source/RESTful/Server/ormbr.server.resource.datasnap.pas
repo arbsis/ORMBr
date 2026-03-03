@@ -19,8 +19,8 @@ unit ormbr.server.resource.datasnap;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
+  Classes,
+  SysUtils,
   /// DataSnap
   Datasnap.DSServer,
   Datasnap.DSAuth,
@@ -28,7 +28,7 @@ uses
   Datasnap.DSCommonServer,
   Datasnap.DSNames,
   Data.DBXPlatform,
-  System.JSON,
+  JSON,
   /// ORMBr
   ormbr.server.restquery.parse,
   ormbr.server.resource;

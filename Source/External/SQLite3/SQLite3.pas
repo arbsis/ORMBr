@@ -459,8 +459,7 @@ type
   end;
 
   sqlite3_module = record
-
-    iVersion: Integer;
+    iVersion: Integer;
     xCreate: function (db: TSQLiteDB; pAux: Pointer;
                  argc: Integer; argv: PPAnsiChar;
                  out ppVTab: Psqlite3_vtab; out pzErr: PAnsiChar): Integer; cdecl;

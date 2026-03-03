@@ -12,7 +12,7 @@ uses
   dbebr.factory.firedac,
   ormbr.model.person,
   ormbr.dml.generator.firebird,
-  System.Generics.Collections,
+  Generics.Collections,
   FMX.StdCtrls,
   FMX.Controls.Presentation, FireDAC.Stan.Intf, FireDAC.Stan.Option,
   FireDAC.Stan.Error, FireDAC.UI.Intf, FireDAC.Phys.Intf, FireDAC.Stan.Def,

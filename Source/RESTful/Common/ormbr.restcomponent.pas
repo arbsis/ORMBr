@@ -30,8 +30,8 @@ unit ormbr.restcomponent;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils;
+  Classes,
+  SysUtils;
 
 type
   TORMBrAboutInfo = (ORMBrAbout);

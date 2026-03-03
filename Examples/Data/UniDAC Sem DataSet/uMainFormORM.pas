@@ -3,24 +3,24 @@ unit uMainFormORM;
 interface
 
 uses
-  Winapi.Windows,
-  Winapi.Messages,
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  Data.DB,
-  Vcl.Grids,
-  Vcl.DbGrids,
-  Vcl.StdCtrls,
-  Vcl.Mask,
-  Datasnap.DBClient,
-  Vcl.DBCtrls,
-  Vcl.ExtCtrls,
-  System.Generics.Collections,
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  DB,
+  Grids,
+  DBGrids,
+  StdCtrls,
+  Mask,
+  DBClient,
+  DBCtrls,
+  ExtCtrls,
+  Generics.Collections,
   /// orm factory
   ormbr.factory.interfaces,
   ormbr.factory.unidac,
@@ -106,7 +106,7 @@ var
 implementation
 
 uses
-  System.StrUtils,
+  StrUtils,
   ormbr.form.monitor;
 
 {$R *.dfm}

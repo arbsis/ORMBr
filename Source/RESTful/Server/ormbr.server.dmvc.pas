@@ -19,13 +19,13 @@ unit ormbr.server.dmvc;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
-  ormbr.restcomponent;
+  Classes,
+  SysUtils,
+  ormbr.restcomponent,
   /// ORMBr Conexão
- // ormbr.factory.interfaces,
+  ormbr.factory.interfaces,
   /// WiRL
-//  MVCFramework;
+  MVCFramework;
 
 type
   TRESTServerDMVC = class(TORMBrComponent)

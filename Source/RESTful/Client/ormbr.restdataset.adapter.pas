@@ -32,14 +32,14 @@ unit ormbr.restdataset.adapter;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.TypInfo,
-  System.Classes,
-  System.SysUtils,
-  System.StrUtils,
-  System.Variants,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  TypInfo,
+  Classes,
+  SysUtils,
+  StrUtils,
+  Variants,
+  Generics.Collections,
   ormbr.bind,
   ormbr.dataset.fields,
   ormbr.dataset.base.adapter,

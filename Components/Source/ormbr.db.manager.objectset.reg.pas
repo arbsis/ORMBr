@@ -30,7 +30,7 @@ unit ormbr.db.manager.objectset.reg;
 interface
 
 uses
-  System.Classes,
+  Classes,
   DesignIntf,
   DesignEditors,
   ormbr.db.manager.objectset;

@@ -19,10 +19,10 @@ unit ormbr.server.restobjectset.session;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.TypInfo,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  TypInfo,
+  Generics.Collections,
   /// ORMBr
   dbcbr.rtti.helper,
   dbcbr.mapping.classes,

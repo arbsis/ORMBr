@@ -3,23 +3,23 @@ unit uMainFormORM;
 interface
 
 uses
-  Winapi.Windows,
-  Winapi.Messages,
-  System.SysUtils,
-  System.Variants,
-  System.Classes,
-  Vcl.Graphics,
-  Vcl.Controls,
-  Vcl.Forms,
-  Vcl.Dialogs,
-  Data.DB,
-  Vcl.Grids,
-  Vcl.DbGrids,
-  Vcl.StdCtrls,
-  Vcl.Mask,
-  Datasnap.DBClient,
-  Vcl.DBCtrls,
-  Vcl.ExtCtrls,
+  Windows,
+  Messages,
+  SysUtils,
+  Variants,
+  Classes,
+  Graphics,
+  Controls,
+  Forms,
+  Dialogs,
+  DB,
+  Grids,
+  DBGrids,
+  StdCtrls,
+  Mask,
+  DBClient,
+  DBCtrls,
+  ExtCtrls,
   MidasLib,
   /// orm factory
   ormbr.container.clientdataset,
@@ -32,7 +32,7 @@ uses
   ormbr.model.detail,
   ormbr.model.lookup,
   ormbr.model.client,
-  Data.Win.ADODB;
+  ADODB;
 
 type
   TForm3 = class(TForm)

@@ -30,7 +30,7 @@ unit ormbr.modeldb.compare;
 interface
 
 uses
-  System.SysUtils,
+  SysUtils,
   ormbr.metadata.classe.factory,
   dbebr.factory.interfaces,
   dbcbr.metadata.db.factory,

@@ -18,7 +18,7 @@ function mongoObjectId:String;
 
 implementation
 
-uses Winapi.Windows, System.SysUtils, bsonTools, System.Win.Registry;
+uses Windows, SysUtils, bsonTools, Registry;
 
 var
   mongoObjectID_MachineID,mongoObjectID_Counter:integer;

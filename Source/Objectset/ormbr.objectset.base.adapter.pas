@@ -34,11 +34,11 @@ unit ormbr.objectset.base.adapter;
 interface
 
 uses
-  System.Rtti,
-  System.TypInfo,
-  System.Variants,
-  System.SysUtils,
-  System.Generics.Collections,
+  Rtti,
+  TypInfo,
+  Variants,
+  SysUtils,
+  Generics.Collections,
   ormbr.session.abstract,
   ormbr.objectset.abstract,
   ormbr.core.consts,

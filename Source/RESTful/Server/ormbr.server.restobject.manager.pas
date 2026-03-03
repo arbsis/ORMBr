@@ -19,13 +19,13 @@ unit ormbr.server.restobject.manager;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.Types,
-  System.Classes,
-  System.SysUtils,
-  System.Variants,
-  System.Generics.Collections,
+  DB,
+  Rtti,
+  Types,
+  Classes,
+  SysUtils,
+  Variants,
+  Generics.Collections,
   /// ormbr
   ormbr.command.executor.abstract,
   ormbr.command.factory,

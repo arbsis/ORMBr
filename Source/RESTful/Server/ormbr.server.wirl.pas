@@ -19,8 +19,8 @@ unit ormbr.server.wirl;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
+  Classes,
+  SysUtils,
   ormbr.restcomponent,
   /// ORMBr Conexão
   ormbr.factory.interfaces,

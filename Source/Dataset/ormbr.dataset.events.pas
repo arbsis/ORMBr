@@ -30,9 +30,9 @@ unit ormbr.dataset.events;
 interface
 
 uses
-  Data.DB,
-  System.Rtti,
-  System.TypInfo;
+  DB,
+  Rtti,
+  TypInfo;
 
 type
   TDataSetEvents = class abstract

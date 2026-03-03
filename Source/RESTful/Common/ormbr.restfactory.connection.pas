@@ -30,8 +30,8 @@ unit ormbr.restfactory.connection;
 interface
 
 uses
-  System.Classes,
-  System.SysUtils,
+  Classes,
+  SysUtils,
   ormbr.client.restdriver,
   ormbr.client.methods,
   ormbr.restfactory.interfaces;

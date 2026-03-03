@@ -4,10 +4,10 @@ unit ormbr.model.master;
 interface
 
 uses
-  System.Classes, 
-  Data.DB, 
-  System.SysUtils, 
-  System.Generics.Collections, 
+  Classes, 
+  DB, 
+  SysUtils, 
+  Generics.Collections, 
   /// orm 
   ormbr.model.detail,
   ormbr.model.client,

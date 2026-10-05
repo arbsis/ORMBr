@@ -275,7 +275,7 @@ begin
     LObject := LObjectList.Items[LFor];
     if ACascadeAction = TCascadeAction.CascadeInsert then // Insert
     begin
-      FSession.Insert(LObject);
+      FSession.Insert(M(LObject));
       // Popula as propriedades de relacionamento com os valores do master
       LPrimaryKey := TMappingExplorer
                        .GetMappingPrimaryKeyColumns(LObject.ClassType);
@@ -289,7 +289,7 @@ begin
     if ACascadeAction = TCascadeAction.CascadeDelete then // Delete
     begin
       CascadeActionsExecute(LObject, TCascadeAction.CascadeDelete);
-      FSession.Delete(LObject);
+      FSession.Delete(M(LObject));
     end
     else
     if ACascadeAction = TCascadeAction.CascadeUpdate then // Update
@@ -303,7 +303,7 @@ begin
         FObjectState.TrimExcess;
       end
       else
-        FSession.Insert(LObject);
+        FSession.Insert(M(LObject));
     end;
     // Executa comando em cascade de cada objeto da lista
     if not (ACascadeAction = TCascadeAction.CascadeDelete) then
@@ -330,7 +330,7 @@ begin
     Exit;
   if ACascadeAction = TCascadeAction.CascadeInsert then // Insert
   begin
-    FSession.Insert(LObject);
+    FSession.Insert(M(LObject));
     // Popula as propriedades de relacionamento com os valores do master
     LPrimaryKey := TMappingExplorer
                      .GetMappingPrimaryKeyColumns(LObject.ClassType);
@@ -344,7 +344,7 @@ begin
   if ACascadeAction = TCascadeAction.CascadeDelete then // Delete
   begin
     CascadeActionsExecute(LObject, TCascadeAction.CascadeDelete);
-    FSession.Delete(LObject);
+    FSession.Delete(M(LObject));
   end
   else
   if ACascadeAction = TCascadeAction.CascadeUpdate then // Update
@@ -359,7 +359,7 @@ begin
     end
     else
     begin
-      FSession.Insert(LObject);
+      FSession.Insert(M(LObject));
       // Popula as propriedades de relacionamento com os valores do master
       LPrimaryKey := TMappingExplorer
                        .GetMappingPrimaryKeyColumns(LObject.ClassType);
@@ -468,7 +468,7 @@ begin
     Exit;
   if FSession.ModifiedFields.Items[LKey].Count = 0 then
     Exit;
-  FSession.Update(AObject, LKey);
+  FSession.Update(M(AObject), LKey);
 end;
 
 function TObjectSetBaseAdapter<M>.NextPacket: TObjectList<M>;

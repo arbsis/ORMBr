@@ -276,7 +276,7 @@ begin
       // Preenche o objeto com os dados do ResultSet
       Bind.SetFieldToProperty(LResultSet, LObjectValue);
       // Alimenta registros das associações existentes 1:1 ou 1:N
-      FillAssociation(LObjectValue);
+      FillAssociation(M(LObjectValue));
     end;
   finally
     LResultSet.Close;
@@ -307,7 +307,7 @@ begin
       // Popula o objeto com os dados do ResultSet
       Bind.SetFieldToProperty(LResultSet, LObjectCreate);
       // Alimenta registros das associações existentes 1:1 ou 1:N
-      FillAssociation(LObjectCreate);
+      FillAssociation(M(LObjectCreate));
       // Adiciona o objeto a lista
       LObjectList := AProperty.GetNullableValue(AObject).AsObject;
       if LObjectList <> nil then

@@ -248,7 +248,7 @@ begin
         end;
         // Remove o item excluído em Update Mestre-Detalhe
         for LObjectKey in FObjectState.Values do
-          FSession.Delete(LObjectKey);
+          FSession.Delete(M(LObjectKey));
       end;
       if not LInTransaction then
         FConnection.Commit;
